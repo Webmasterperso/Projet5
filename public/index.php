@@ -6,7 +6,7 @@ use Slim\Factory\AppFactory;
 use App\Controllers\Control as controleur;
 //use App\Models\Modeloeuvres as modeloeuvres;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../projet5masson/vendor/autoload.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('../src/templates');
 $twig = new \Twig\Environment($loader, [

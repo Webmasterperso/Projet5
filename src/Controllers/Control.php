@@ -13,28 +13,19 @@ class Control
     {
         $this->name = $arg;
         //$this->oeuvres = $dataoeuvre;
-        
+       
     }
 
    
     public function affiche()
     {
-        //$modeloeuvre = new modeloeuvres(); // Création d'un objet
-        //$oeuvres = $modeloeuvre->readlistoeuvres(); // Appel d'une fonction de cet objet
+        $modeloeuvre = new modeloeuvres(); // Création d'un objet
+        $oeuvres = $modeloeuvre->readlistoeuvres(); // Appel d'une fonction de cet objet
         global $twig;
         return $twig->render('Viewlist.twig', [
             "moteur_name" => 'Twig',
             "a_variable" => $this->name,
-            "oeuvres" => [
-                [
-                    "username" => "lien1.html",
-                    "caption" => "premier lien"
-                ],
-                [
-                    "username" => "lien2.html",
-                    "caption" => "second lien"
-                ]
-            ]
+            "oeuvres" => "liste oeuvre"
         ]);
     }
 }

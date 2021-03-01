@@ -22,10 +22,12 @@ class Control
         $modeloeuvre = new modeloeuvres(); // Création d'un objet
         $oeuvres = $modeloeuvre->readlistoeuvres(); // Appel d'une fonction de cet objet
         global $twig;
+        
         return $twig->render('Viewlist.twig', [
             "moteur_name" => 'Twig',
             "a_variable" => $this->name,
-            "oeuvres" => "liste oeuvre"
+            "oeuvres" => $oeuvres
+            
         ]);
     }
 }

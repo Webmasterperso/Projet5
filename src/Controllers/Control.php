@@ -2,29 +2,30 @@
 
 namespace App\Controllers;
 
-use App\Models\Modeloeuvres as ModelOeuvres;
+use App\Models\Modeloeuvres as modeloeuvres;
+
+
+
 
 class Control
 {
     public function __construct($arg)
     {
         $this->name = $arg;
+        //$this->oeuvres = $dataoeuvre;
+        
     }
 
-    function listoeuvre()
-    {
-        $modeloeuvre = new Modeloeuvres(); // Création d'un objet
-        $oeuvres = $modeloeuvre->readlistoeuvres(); // Appel d'une fonction de cet objet
-
-        require('view/Viewlistchapter.php');
-    }
-
+   
     public function affiche()
     {
+        //$modeloeuvre = new modeloeuvres(); // Création d'un objet
+        //$oeuvres = $modeloeuvre->readlistoeuvres(); // Appel d'une fonction de cet objet
         global $twig;
-        return $twig->render('templateinit.twig', [
+        return $twig->render('Viewlist.twig', [
+            "moteur_name" => 'Twig',
             "a_variable" => $this->name,
-            "users" => [
+            "oeuvres" => [
                 [
                     "username" => "lien1.html",
                     "caption" => "premier lien"

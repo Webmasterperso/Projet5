@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-
+use APP\Models\Modeloeuvres as ModelOeuvres;
 
 class Test  
 {
@@ -17,8 +17,14 @@ class Test
         return $twig->render('demo.twig', [
             "a_variable" => $this->name,
             "users" =>[
-                    "username"=>"lien1",  
-                    "username" => "lien2"
+                [
+                    "username"=>"lien1.html",
+                    "caption"=>"premier lien"
+                ],
+                [
+                    "username" => "lien2.html",
+                    "caption" => "second lien"
+                ]
             ]
         ]);
     }

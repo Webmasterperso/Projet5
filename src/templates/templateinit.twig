@@ -3,7 +3,7 @@
 <head>
     {% block head %}
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
     <!-- META VIEWPORT permet de controler le zoom et la mise en page sur les navigateur mobile et tablette -->
@@ -11,12 +11,14 @@
 </head>
 <body>
 <section id="content">
-{% block content %}{% endblock %}
+{% block content %}
+    
+{% endblock %}
 </section>
 <footer id="footer">
     {% block footer %}
     &copy; Copyright 2021 <a href="http://monsite.com">
-    Mon super Site</a>.
+    Anne Madamet</a>.
     {% endblock %}
 </footer>
 </body>

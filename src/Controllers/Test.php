@@ -29,3 +29,10 @@ class Test
         ]);
     }
 }
+
+
+$oeuvr = array(array(
+    "titre" => "ttttttt",
+    "description" => "dddddddd",
+    "catégorie" => "cccccc"
+));

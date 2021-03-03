@@ -8,13 +8,18 @@
 {% endblock %}
 
 {% block content %}
-    <p>Vous venez de faire votre  template avec {{ moteur_name }} !</p>
+
     <h1>{{ a_variable }}</h1>
-    <p> tableau oeuvre : {{oeuvres}}</p>
+    
+    
     <ul id="Listeoeuvre">
     
         {% for oeuvre in oeuvres %}
-            <li>titre : {{ oeuvre.oeuvre_titre|e }}</li>
+        <p>
+            <li>numéro de l'oeuvre: {{ oeuvre.oeuvre_id|e }}</li>
+            <li>titre oeuvre: {{ oeuvre.oeuvre_titre|e('html') }}</li>
+            <li>description oeuvre : {{ oeuvre.oeuvre_description|e('html') }}</li>
+            <li><a href="/oeuvre/{{ oeuvre.oeuvre_id|e }}">Détails</a></li>
                 
         {%  else  %}
             Aucun lien n'a été trouvé.

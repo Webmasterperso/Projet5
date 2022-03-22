@@ -1,0 +1,606 @@
+body {
+  font-family: "Raleway", arial, sans-serif;
+  max-width: 100%;
+  margin: 0 auto;
+  background-attachment:fixed;
+  background-size: 100%;
+  /**background-color:rgba(60, 60, 60, 0.8);**/
+  background-image: url(/images/ecume_mer.jpg);
+}
+
+h1 {
+  font-family: 'Italianno', cursive,arial, sans-serif;
+  font-size: 70px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: "Raleway", arial, sans-serif;
+  font-size: 30px;
+  color:lemonchiffon;
+}
+
+.alerte {
+  color: red;
+  
+}
+
+nav {
+  
+  height: 100px;
+  width: 100%;
+  /**background-color: rgba(61, 10, 10, 1);**/
+  /**background-image: url(/images/ecume_mer.jpg);**/
+  /**background-attachment:fixed;
+  background-repeat : repeat-x;**/
+  
+  right: 0;
+  top: 0;
+  /**position: fixed**/;
+}
+
+nav #menuband{
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 3%;
+  
+}
+
+nav #menuband ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: 80px;
+}
+
+#menufooter{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: 40px;
+}
+
+.menufooterul{
+  /**list-style-image: url("/images/menured.png");**/
+  list-style-type: circle;
+}
+
+
+
+
+
+nav #menuband #menutext {
+  width: 50%;
+}
+nav #menuband #menutext li a{
+  color:white;
+  text-shadow: 2px 2px 3px #08f314;
+  text-decoration: none;
+}
+
+nav #menuband #menutext li{
+   text-shadow: 4px 4px 6px rgb(4, 234, 241);
+   color: white;
+}
+
+nav #menuband p {
+  display:block;
+  margin: 0;
+
+}
+
+nav #menuband #menuicon{
+  width: 10%;
+  padding-left: 20px;
+  }
+
+
+nav #menuband #menuicon li a , .menufooterul li a{
+  /**display: block;
+  padding-top: 10px;
+  font-size: 15px;**/
+  color: white;
+  text-shadow: 3px 3px 4px #ac0606;
+  
+  }
+
+  
+
+nav #menuband #menuicon a:hover , .menufooterul a:hover{
+  color:#ac0606;
+  text-shadow: 1px 1px 1px white;
+  
+  }
+
+
+
+@keyframes chgmenu {
+  0% {
+    border-top: 1px solid white;
+  text-shadow: 2px 2px 3px #08f314;
+  }
+  25% {
+    border-top: 1.5px solid white;
+  text-shadow: 2px 1px 3.2px #08f314;
+  }
+  50% {
+    border-top: 2px solid white;
+  text-shadow: 2px 0px 3.4px #08f314;
+  }
+  75% {
+    border-top: 2.5px solid white;
+  text-shadow: 2px -1px 3.6px #08f314;
+  }
+  100% {
+    border-top: 3px solid white;
+    text-shadow: 2px -2px 3.8px #08f314;
+  }
+}
+
+@-webkit-keyframes chgmenu {
+  0% {
+    border-top: 1px solid white;
+  text-shadow: 2px 2px 3px #08f314;
+  }
+  25% {
+    border-top: 1.5px solid white;
+  text-shadow: 2.2px 2.2px 3.2px #08f314;
+  }
+  50% {
+    border-top: 2px solid white;
+  text-shadow: 2.4px 2.4px 3.4px #08f314;
+  }
+  75% {
+    border-top: 2.5px solid white;
+  text-shadow: 2.6px 2.6px 3.6px #08f314;
+  }
+  100% {
+    border-top: 3px solid white;
+    text-shadow: 2.8px 2.8px 3.8px #08f314;
+  }
+}
+
+nav #menuband ul li a:hover{
+  color:lemonchiffon;
+  border-top: 3px solid white;
+  
+  animation: chgmenu 0.5s forwards ease;
+  -webkit-animation: chgmenu 1s forwards ease;
+}
+
+
+
+#content {
+margin-top : 20px;
+padding-top: 20px;
+padding-bottom: 20px;
+margin-bottom: 20px;
+background-color: dimgray;
+}
+
+#content p{
+/**margin-inline-start: 30px;**/
+color : rgb(190, 189, 189);
+margin-left: 10px;
+font-style: italic;
+}
+
+#tableauoeuvres {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  background-color: dimgray;
+  margin: auto;
+  list-style-type: none;
+}
+
+#tableauoeuvres ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+#tableauoeuvres ul {
+  
+  list-style-type: none;
+  background-color: black;
+  width: 15%;
+  padding: 10px;
+  border: 4mm ridge rgba(116, 85, 56, 0.7);
+  box-shadow: 10px 5px 5px rgb(56, 56, 56);
+  
+  margin:10px;
+  
+}
+
+#tableauoeuvres ul li {
+
+  text-align: center;
+  color:lemonchiffon;
+  
+}
+
+
+#tableauoeuvres ul li img {
+  align-items: center;
+  width: 80%;
+}
+
+#trioeuvres{
+  padding: 20px;
+  text-align: center;
+  color:lemonchiffon;
+  font-size: 24px;
+
+}
+
+.tricategories {
+  font-size: 15px;
+  border-radius: 20px;
+  
+  border: 4px double #85c872;
+}
+
+
+
+#slide{
+  position: relative;
+  display: flex;
+  height: 600px;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 40px;
+  box-shadow: 5px 5px 15px 5px gray, -1px -1px 10px 5px #85c872;
+  background-color: white;
+}
+
+#contact , #connection {
+  
+  height: 400px;
+  width: 50%;
+  margin: 10px auto;
+  
+  text-align: center;
+  border-radius: 40px;
+
+  /**box-shadow: 5px 5px 15px 5px gray, -1px -1px 10px 5px #85c872;**/
+  background-color: white;
+}
+
+.formulaire {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.formulaire form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+  width: 70%;
+  border: 2px solid grey;
+  border-radius : 2em;
+  background: linear-gradient(to bottom right, rgba(116, 85, 56, 0.7), white);
+  box-shadow: 5px 5px 15px 5px gray;
+  
+}
+
+input[type=submit] {
+   
+    border-radius: 10px;
+    border: 2px black ridge;
+    /**box-shadow: 2px 2px 5px whitesmoke;**/
+    cursor: pointer;
+}
+
+
+
+#btdelete {
+  box-shadow: 2px 2px 5px rgb(248, 3, 3);
+}
+#btdelete :active {
+  box-shadow: 1px 1px 3px rgb(128, 2, 2);
+}
+
+
+#btsave, #btsavenew{
+  box-shadow: 2px 2px 5px rgb(73, 248, 3);
+}
+#btsave:active, #btsavenew:active{
+  box-shadow: 1px 1px 3px rgb(37, 126, 2);
+}
+
+
+#slide_left {
+  position: absolute;
+  top: 220px;
+  left: -60px;
+  text-align: left; /**sens inverse car transform scaleX**/
+  border-top-left-radius: 25%;
+  font-size: 45px;
+  z-index: 100;
+}
+
+#slide_left :hover{
+  color:lemonchiffon;
+  text-shadow: -5px 0px 15px #85c872;
+}
+
+#slide_left :active{
+  
+  transform : rotate(-45deg);
+}
+
+#slide_right {
+  position: absolute;
+  top: 220px;
+  right: -60px;
+  text-align: left;
+  border-top-left-radius: 25%;
+  border-bottom-left-radius: 25%;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  font-size: 45px;
+  z-index: 100;
+}
+
+#slide_right :hover{
+  color:lemonchiffon;
+  text-shadow: -5px 0px 15px#85c872;
+}
+
+#slide_right :active{
+  color:lemonchiffon;
+  transform : rotate(-45deg);
+}
+
+#oeuvre , #contact form{
+ border-radius: 40px;
+ height: 100%;
+ width: 100%;
+ padding : 10px;
+ 
+}
+
+@keyframes chgimagein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes chgimagein {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes chgimageout {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes chgimageout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.diapo {
+  display:none;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 85%;
+  margin-block-start: 0.8em;
+  background-color: black;
+  font-size: 18px;
+  border: 4mm ridge rgba(116, 85, 56, 0.7);
+
+  
+
+  animation: chgimagein 1s ease;
+  -webkit-animation: chgimagein 1.5s ease;
+
+  animation: chgimageout 1s ease;
+  -webkit-animation: chgimageout 1.5s ease;
+}
+
+
+
+.diapo:nth-child(1) {
+  display: flex;
+}
+
+.iconeoeuvre , .iconeactualite {
+  max-width: 6em;
+  min-width: 6em;
+}
+
+.image img {
+    
+   max-height: 100%;
+    margin: 0 auto;
+}
+
+#detailsoeuvre {
+  list-style-type: none;
+  color:lemonchiffon;
+  width: 60%;
+
+}
+
+#detailsoeuvre li {
+  display: block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom : 1px solid lemonchiffon;
+}
+#detailsoeuvre li #logovendu {
+  height: 100px;
+}
+
+
+.tableeditoeuvre{
+  width: 90%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lemonchiffon ;
+}
+
+.tablenewoeuvre, .tablenewactualite{
+  background-color: gray;
+  margin-bottom: 20px;
+}
+
+.tablenewoeuvre thead tr, .tablenewactualite thead tr{
+  height: 35px;
+  text-align: center;
+  background-color:rgba(206, 6, 6, 0.479);
+  color: lemonchiffon;
+}
+
+.tableeditoeuvre thead tr, .tableeditactualite thead tr{
+  height: 35px;
+  text-align: left;
+  background-color: lemonchiffon;
+}
+
+.tableeditoeuvre tbody tr , .tablenewoeuvre tbody tr, .tableeditactualite tbody tr, .tablenewactualite tbody tr{
+  
+  font-size: 15px;
+  vertical-align: middle;
+  align-items: center;
+  text-align:left;
+  padding-bottom: 20px;
+  color:lemonchiffon;
+  border-bottom: 3px solid lemonchiffon ;
+}
+
+.tableeditoeuvre tbody tr td , .tablenewoeuvre tbody tr td, .tableeditactualite tbody tr td , .tablenewactualite tbody tr td{
+  border-right: 50px;
+  border-left: 20px;
+}
+
+.champoeuvre , .champactualite{
+  background-color: black;
+  max-width: 400px;
+  color:lemonchiffon;
+}
+
+#description{
+  width: 400px;
+  height:100px;
+}
+
+#actualite{
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lemonchiffon ;
+  background-color: dimgray;
+}
+
+#actualite h2 {
+  border-top : 1px solid lemonchiffon ;
+  color :rgb(255, 255, 255);
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+  
+}
+
+#actualitedetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /**height: 80%;**/
+  background-color: dimgray;
+  margin: auto;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#actualitedetails ul{
+  color : lemonchiffon;
+  list-style-type: none;
+  
+  font-size: 24px;
+}
+
+#imageactu {
+  height: 100%;
+  
+
+}
+
+#actualitedetails img{
+  padding:4px;
+  background-color:lemonchiffon;
+  border: 1px solid lemonchiffon;
+  border-radius: 6px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+#artistedetails h3{
+  display: block;
+  margin-left: 20px;
+  font-style: oblique;
+}
+
+#imageartiste {
+  
+  float:left;
+  
+  margin: 20px;
+}
+
+#artistedescrip{
+  
+  text-align: justify;
+ 
+  margin: 25px;
+}
+
+footer {
+  background-color: dimgray;
+
+}
+
+footer #footer {
+  font-size: 20px;
+}

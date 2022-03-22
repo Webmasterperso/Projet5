@@ -23,7 +23,7 @@ $twig = new \Twig\Environment($loader, [
 $twig->addFilter(new \Twig\TwigFilter('html_entity_decode', 'html_entity_decode'));
 $twig->addExtension(new \Twig\Extension\DebugExtension);
 
-if ($uri = "Mes Oeuvres") {
+
     $app = AppFactory::create();
     $app->get('/{nompage}', function (Request $request, Response $response, $args) {
         $ctrl = new controleur($args["nompage"]);
@@ -32,4 +32,4 @@ if ($uri = "Mes Oeuvres") {
     });
 
     $app->run();
-}
+

@@ -1,6 +1,7 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Le site d'Anne Madamet
+{% block title %}
+Le site d'Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -9,11 +10,24 @@
 
 {% block content %}
 
+    
+<!-- 
+    {% for nomuser in datauser %}
+    
+    <h1>Bienvenue {{nomuser.user_pseudo|e}}</h1>
+    <h1>Bienvenue dans la session de {{session.user|e}}</h1>
+    {% endfor %} 
+-->
+    <p>Page d'accueil du site de Anne Madamet, artiste peintre</p>
     <h1>{{ a_variable }}</h1>
+    <section id="slideaccueil">
+
+    </section>
+    
+
 
     
-    <p>page d'accueil du site de Anne Madamet</p>
-    <a href="/Mes oeuvres">Mes oeuvres</a></li>
+    <!--<a href="/oeuvres">Mes oeuvres</a></li>-->
     
     
        

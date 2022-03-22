@@ -1,0 +1,33 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Les oeuvres d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+    <p>Actualités mis à jour le {{ "now"|date("d/m/Y") }}</p>
+
+    <section id="actualite">
+       
+        {% for actualites in dataactualite %}
+            <h2>{{actualites.date_actualite_fr|e}} - {{ actualites.actualite_titre|e }}</H2>
+            <div id="actualitedetails">
+                <div id="imageactu">
+                <img src="/imagesactu/{{actualites.actualite_lien|e}}" alt="la photo" id="photo" /></a>
+                </div>
+                <ul>                    
+                    <li>{{ actualites.actualite_text|e }}</li>
+                </ul>
+            </div>
+
+        {%  else  %}
+            Aucun lien n'a été trouvé.
+        {% endfor %}  
+     </section>   
+    
+{% endblock %}

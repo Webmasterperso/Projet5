@@ -1,0 +1,35 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+
+    <section id='artiste'>
+
+        {% for artiste in dataartiste %}
+    
+        <div id="artistedetails">
+            <h3>{{ artiste.artiste_title|e }}</h3>
+            <div id="imageartiste">
+                
+                <img src="/images/{{artiste.artiste_photo|e}}" alt="portrait" id="photo" />
+            </div>
+            <div id="artistedescrip">                    
+                {{ artiste.artiste_text|raw }}
+             </div>
+
+        </div>
+
+        {% endfor %}
+    </section>
+   
+       
+   
+{% endblock %}

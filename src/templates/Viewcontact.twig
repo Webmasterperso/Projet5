@@ -1,0 +1,44 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+
+    <section id='contact'>
+        <div class = "formulaire">
+
+            <form action="/contact" method="post" enctype="application/x-www-form-urlencoded" name="contact">
+            
+                <div>
+                    <label for="author">Nom</label><br />
+                    <input type="text" id="nom" name="nom" />
+                </div>
+                <div>
+                    <label for="author">Prénom</label><br />
+                    <input type="text" id="prenom" name="prenom" />
+                </div>
+                <div>
+                    <label for="author">Mail</label><br />
+                    <input type="email" id="mail" name="mail" />
+                </div>
+                <div>
+                    <label for="textcomment">Votre demande</label><br />
+                    <textarea id="demande" name="demande" cols="80" rows="10"></textarea>
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+{% endblock %}

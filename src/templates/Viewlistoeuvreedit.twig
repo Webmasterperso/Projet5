@@ -1,0 +1,110 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Les oeuvres d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ a_variable }}</h1>
+
+    <xection id="newoeuvre">
+        <table class="tablenewoeuvre">
+            <thead>
+                <tr>
+                    <th COLSPAN=7>Nouvelle oeuvre</th>
+                </tr>
+                <tr>
+                <th class = "alerte" COLSPAN=7>{{ a_alerte }}</th>
+                </tr>
+                
+                <tr>
+                    <th> Photo</th>
+                    <th> N°</th>
+                    <th> Catégorie</th>
+                    <th> Titre</th>
+                    <th> Description</th>
+                    <th> Prix</th>
+                    <th> Lien photo</th>
+                    <th> </th>
+
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <form action="/oeuvreedit" method="post" name="oeuvres" enctype="multipart/form-data">
+                        <td><img class="iconeoeuvre" src="" alt="la photo" id="photo" /></td>
+                        <td>N°</td>
+                        <td>
+                            <select name="tricategories" class="tricategories">
+                                <option value="0"selected="selected">Catégorie</option>
+                                {% for categorie in datacat %}
+                                    <option value="{{ categorie.categorie_id|e }}">{{ categorie.categorie_nom|e }}</option>
+                                {% endfor %}
+                                <option value=rang+1>-- Ajouter une catégorie --</option>
+                            </select>
+                        </td>
+                        <td><input class = "champoeuvre" type="text" id="titre" name="titre" placeholder="Titre de l'oeuvre"/></td>
+                        <td><textarea class = "champoeuvre" id="description" name="description" placeholder="Description de l'oeuvre"></textarea></td>
+                        <td><input class = "champoeuvre" type="text" id="prix" name="prix" placeholder="Prix"/> € </td>
+                        <td><input class = "champoeuvre" type="text" id="lien" name="lien" placeholder="Lien de la photo"/>
+                            <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
+                        <td><input class = "btform" id = "btsavenew" type="submit" name="Enregistrernew" value="Enregistrer" /></td>
+                    </form>
+                </tr>
+            </tbody>
+
+        </table>
+    </section>
+
+    <xection id="listeoeuvres">
+        {% for categories in datacat %}
+
+            <table class="tableeditoeuvre">
+                <thead>
+                    <tr>
+                        <th COLSPAN=7>{{ categories.categorie_nom|e }}</th>
+                        {# <input class = "saveoeuvre" type="submit" name="Ajouter" value="Ajouter une oeuvre" /></th> #}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for oeuvre in data %}
+                        {% if oeuvre.categorie_id == categories.categorie_id %}
+                            <tr>
+                                <form action="/oeuvreedit" method="post" name="oeuvres" enctype="multipart/form-data">
+                                    <td><img class="iconeoeuvre" src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="la photo" id="photo" /></td>
+                                    <td><input class = "champoeuvre" type="hidden" id="id" name="id" value="{{ oeuvre.oeuvre_id|e }}" /></td>
+                                    <td>{{ oeuvre.oeuvre_id|e }}</td>
+                                    <td>
+                                        <select name="tricategories" class="tricategories">
+                                            {% for categorie in datacat %}
+                                                {% if categories.categorie_id == categorie.categorie_id %}
+                                                    <option value="{{ categorie.categorie_id|e }}"selected="selected">{{ categorie.categorie_nom|e }}</option>
+                                                {% else %}
+                                                    <option value="{{ categorie.categorie_id|e }}">{{ categorie.categorie_nom|e }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <option value=rang+1>-- Ajouter une catégorie --</option>
+                                        </select>
+                                    </td>
+                                    <td><input class = "champoeuvre" type="text" id="titre" name="titre" value="{{ oeuvre.oeuvre_titre|raw }}"/></td>
+                                    <td><textarea class = "champoeuvre" id="description" name="description">{{ oeuvre.oeuvre_description|raw }}</textarea></td>
+                                    <td><input class = "champoeuvre" type="text" id="prix" name="prix">{{ oeuvre.oeuvre_prix|raw }} € </td>
+                                    <td><input class = "champoeuvre" type="text" id="lien" name="lien" value="{{ oeuvre.oeuvre_lien|raw }}"/>
+                                        <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
+                                    <td><input class = "btform" id = "btsave" type="submit" name="Enregistrer" value="Enregistrer" /></td>
+                                    <td><input class = "btform" id = "btdelete" type="submit" name="Supprimer" value="Supprimer" /></td>
+                                </form>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

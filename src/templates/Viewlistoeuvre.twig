@@ -1,6 +1,6 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Les oeuvre d'Anne Madamet
+{% block title %}Les oeuvres d'Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -10,19 +10,45 @@
 {% block content %}
 
     <h1>{{ a_variable }}</h1>
+
+    <section id="trioeuvres">
+
+        <label for="tricategories">Catégories des oeuvres : </label>
+
+        <select name="tricategories" class="tricategories">
+            {% if rang == 0 %}
+                <option value="0" selected>-- Toutes --</option>
+            {% else %}
+                <option value="0">-- Toute --</option>
+            {% endif %}
+
+            {% for categorie in datacat %}
+
+                {% if rang == categorie.categorie_id %}
+                    <option value="{{ categorie.categorie_id|e }}" selected>{{ categorie.categorie_nom|e }}</option>
+                {% else %}
+                    <option value="{{ categorie.categorie_id|e }}">{{ categorie.categorie_nom|e }}</option>
+                {% endif %}
+
+            {% endfor %}
     
-    
-    <ul id="Listeoeuvre">
-    
-        {% for oeuvre in oeuvres %}
-        <p>
-            <li>numéro de l'oeuvre: {{ oeuvre.oeuvre_id|e }}</li>
-            <li>titre oeuvre: {{ oeuvre.oeuvre_titre|e('html') }}</li>
-            <li>description oeuvre : {{ oeuvre.oeuvre_description|e('html') }}</li>
-            <li><a href="/oeuvre/{{ oeuvre.oeuvre_id|e }}">Détails</a></li>
+        </select>
+
+    </section>
+
+    <section id="tableauoeuvres">
+       
+        {% for oeuvre in data %}
+            <ul>
                 
+                <li><a href="/oeuvre/{{ rang }}/{{ oeuvre.oeuvre_id|e }}"><img src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="la photo" id="photo" /></a></li>
+                <li>{{ oeuvre.oeuvre_titre|raw }}</li>
+            
+            </ul>
+
         {%  else  %}
-            Aucun lien n'a été trouvé.
-        {% endfor %}
-    </ul>
+            Aucune oeuvre n'a été trouvée.
+        {% endfor %}            
+     </section>   
+    
 {% endblock %}

@@ -1,0 +1,85 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Les actulalités d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ a_variable }}</h1>
+
+    <xection id="newactualite">
+        <table class="tablenewactualite">
+            <thead>
+                <tr>
+                    <th COLSPAN=7>Nouvelle actualité</th>
+                </tr>
+                <tr>
+                <th class = "alerte" COLSPAN=7>{{ a_alerte }}</th>
+                </tr>
+                
+                <tr>
+                    <th> Photo</th>
+                    <th> N°</th>
+                    <th> Titre</th>
+                    <th> Date</th>
+                    <th> Description</th>
+                    <th> Lien photo</th>
+                    <th> </th>
+
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <form action="/actualiteedit" method="post" name="actualites" enctype="multipart/form-data">
+                        <td><img class="iconeactualite" src="" alt="la photo" id="photo" /></td>
+                        <td>N°</td>
+                        <td><input class = "champoeuvre" type="text" id="titre" name="titre" placeholder="Titre de l'actualité"/></td>
+                        <td><input class = "champoeuvre" type="text" id="date" name="date" placeholder="mois année"/></td>
+                        <td><textarea class = "champoeuvre" id="description" name="description" placeholder="Description de l'actualité"></textarea></td>
+                        <td><input class = "champoeuvre" type="text" id="lien" name="lien" placeholder="Lien de la photo"/>
+                            <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
+                        <td><input class = "btform" id = "btsavenew" type="submit" name="Enregistrernew" value="Enregistrer" /></td>
+                    </form>
+                </tr>
+            </tbody>
+
+        </table>
+    </section>
+
+    <xection id="listeactualité">
+        <table class="tableeditactualite">
+            <thead>
+                <tr>
+                    <th COLSPAN=7>Liste actualités</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for actualite in dataactualite %}
+                
+                <tr>
+                    <form action="/actualiteedit" method="post" name="actualité" enctype="multipart/form-data">
+                        <td><img class="iconeactualite" src="/imagesactu/{{actualite.actualite_lien|e}}" alt="la photo" id="photo" /></td>
+                        <td><input class = "champactualite" type="hidden" id="id" name="id" value="{{ actualite.actualite_id|e }}" /></td>
+                        <td>{{ actualite.actualite_id|e }}</td>
+                        
+                        <td><input class = "champactualite" type="text" id="titre" name="titre" value="{{ actualite.actualite_titre|raw }}"/></td>
+                        <td><input class = "champactualite" type="text" id="date" name="date" value="{{ actualite.date_actualite_fr|raw }}"/></td>
+                        <td><textarea class = "champactualite" id="description" name="description">{{ actualite.actualite_text|raw }}</textarea></td>
+                        <td><input class = "champactualite" type="text" id="lien" name="lien" value="{{ actualite.actualite_lien|raw }}"/>
+                            <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
+                        <td><input class = "saveactu" type="submit" name="Enregistrer" value="Enregistrer" /></td>
+                        <td><input class = "btform" id = "btdelete" type="submit" name="Supprimer" value="Supprimer" /></td>
+                    </form>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <xection id="listeactualité2">
+        <h2>essai 2ème section</h2>
+    </section>    
+{% endblock %}

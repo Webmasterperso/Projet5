@@ -1,0 +1,75 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Les oeuvres d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+
+
+    <section id="slide">
+        <div id="slide_right"><i class="fas fa-palette"></i></div>
+        <div id="slide_left"><i <i class="fas fa-palette"></i></div>
+        
+
+        <section id="oeuvre">
+        
+            {% set firstoeuvre = 1 %}
+            {% set numero = 1 %}
+            {% for oeuvre1 in data1 %}
+                
+                <figure id="diapo1" class="diapo">
+                {% set firstoeuvre = oeuvre1.oeuvre_id %}
+                    <div class="image">
+                    <img src="/imagesoeuvres/{{oeuvre1.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
+                    </div>
+                    <ul id="detailsoeuvre">
+                        <li>numéro de l'oeuvre: {{ oeuvre1.oeuvre_id|e }}</li>
+                        <li>titre oeuvre: {{ oeuvre1.oeuvre_titre|e }}</li>
+                        <li>description oeuvre : {{ oeuvre1.oeuvre_description|e('html') }}</li>
+                        <li>Prix : {{ oeuvre1.oeuvre_prix|e }} €</li>
+                        {% if oeuvre1.oeuvre_statut == "vendu" %}
+                        
+                        <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
+                        {% endif %}
+                    </ul>
+                </figure>
+            {% endfor %} 
+            
+            {% for oeuvre in data %}
+                
+                {% set numero = numero + 1 %}
+                
+                    
+                    {% if oeuvre.oeuvre_id != firstoeuvre %}
+                        <figure id="diapo{{ numero }}" class="diapo">  
+                        <div class="image">
+                        <img src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
+                        </div>
+                        <ul id="detailsoeuvre">
+                            <li>numéro de l'oeuvre: {{ oeuvre.oeuvre_id|e }}</li>
+                            <li>titre oeuvre: {{ oeuvre.oeuvre_titre|e }}</li>
+                            <li>description oeuvre : {{ oeuvre.oeuvre_description|e }}</li>
+                            <li>Prix : {{ oeuvre.oeuvre_prix|e }} €</li>
+                            {% if oeuvre.oeuvre_statut == "vendu" %}
+                            
+                            <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
+                            {% endif %}
+                        </ul>
+                    {% else %}
+                        {% set numero = numero - 1 %}
+                    
+                    {% endif %}
+                </figure>
+            {% endfor %} 
+        </section>
+        
+
+    </section>
+ 
+{% endblock %}

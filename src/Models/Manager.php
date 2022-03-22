@@ -17,5 +17,7 @@ class Manager
             die('Echec connection Base de données : ' . $e->getMessage());
         }
     }
+
+    
     
 }

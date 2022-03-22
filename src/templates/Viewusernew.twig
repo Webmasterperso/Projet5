@@ -1,0 +1,45 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+
+    <section id='connection'>
+    
+        <h2 class = "alerte">{{ a_alerte }}</h1>
+
+        <div class = "formulaire">
+            <form action="/connectnew" method="post" name="users">
+                
+                <div>
+                    <label for="pseudo">Pseudo</label><br />
+                    <input type="text" id="pseudo" name="pseudo" />
+                </div>                
+                <div>
+                    <label for="mdp">Mot de Passe</label><br />
+                    <input type="password" id="mdp" name="mdp" />
+                </div>
+                <div>
+                    <label for="mail">Adresse mail</label><br />
+                    <input type="email" id="mail" name="mail" />
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+            </form>
+
+
+            <p> Déjà inscrit <a href="/connect">Je me connecte</a>
+         </div>
+    </section>
+
+
+
+{% endblock %}

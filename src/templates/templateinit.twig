@@ -3,25 +3,135 @@
 <html lang="fr">
 <head>
     {% block head %}
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a1efcfbe5e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/90392667fd.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/jspoo/SelectObjet.js" defer></script>
+    <script type="text/javascript" src="/jspoo/SlideObjet.js" defer></script>
+    <script type="text/javascript" src="/jspoo/javamanager.js" defer></script>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- fin favicon -->
+    <!--  tinymce  -->
+    <script src="https://cdn.tiny.cloud/1/qfw6s6sx4pvsntv7t1in07fn2m1jxkuutrinitvom3b8kpfj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+      tinymce.init({
+        selector: "textarea#textartiste",
+        
+        menubar: 'edit'
+      });
+    </script>
+    <!--  Fin tinymce  -->
+
+
     <title>{% block title %}{% endblock %}</title>
-    {% endblock %}
+    
     <!-- META VIEWPORT permet de controler le zoom et la mise en page sur les navigateur mobile et tablette -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
-<section id="content">
-{% block content %}
-    
-{% endblock %}
-</section>
-<footer id="footer">
-    {% block footer %}
-    &copy; Copyright 2021 <a href="http://monsite.com">
-    Anne Madamet</a>.
     {% endblock %}
-</footer>
+</head>
+
+<body>
+
+  <header>
+    <!--logo et menu-->
+    <nav>
+      <div id="menuband">
+        <p>
+          <a href="/accueil"><img src="/images/logo.png" alt = "logo" class = "logo" /></a>
+        </p>
+        <ul id="menutext">
+          <li><a href="/accueil">Accueil</a></li>
+          <li>|</li>
+          {% if session.role == "admin" %}
+          <li><a href="/actualiteedit">Actualités</a></li>
+          <li>|</li>
+          <li><a href="/oeuvreedit">Oeuvres</a></li>
+          <li>|</li>
+          <li><a href="/artisteedit">L'artiste</a></li>
+          {% else %}
+          <li><a href="/actualite">Actualités</a></li>
+          <li>|</li>
+          <li><a href="/oeuvrescat/0">Oeuvres</a></li>
+          <li>|</li>
+          <li><a href="/artiste">L'artiste</a></li>
+          {% endif %}
+          <li>|</li>
+        </ul>
+        <ul id="menuicon">
+          {% if session %}
+          <li>Bienvenue {{session.user|e}}</li>
+          <li>Vous êtes {{session.role|e}}</li>
+          <li><a href="/deconnect">Déconnection</a></li>
+          {% else %}
+          <!-- regular style -->
+          <li><a href="/connect"><i class="fa-regular fa-user"></i></a></li>
+          {% endif %}
+          <li><a href="/contact"><i class="fa-solid fa-cart-shopping"></i></a></li>
+          <li><a href="/contact"><i class="fa-regular fa-envelope"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="fenetre">
+
+
+    </section>
+  </header>
+
+
+
+  <section id="content">
+    {% block content %}
+
+    {% endblock %}
+  </section>
+
+
+  <footer id="footer">
+      {% block footer %}
+      <div id="menufooter">
+        <div id="menufooterleft">
+          <p class = "menufooterhead"> Vous et Nous </p>
+          <ul class="menufooterul">
+            <li><a href="/contact">Contact</a></li>
+            <li> <a href="/mentions">Mentions Légales</a></li>
+            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+          </ul>
+        </div>
+        <div id="menufootercenter">
+          <p class = "menufooterhead"> Vous et Nous </p>
+          <ul class="menufooterul">
+            <li><a href="/contact">Contact</a></li>
+            <li> <a href="/mentions">Mentions Légales</a></li>
+            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+          </ul>
+        </div>
+        <div id="menufooterright">
+          <p class = "menufooterhead"> Vous et Nous </p>
+          <ul class="menufooterul">
+            <li><a href="/contact">Contact</a></li>
+            <li> <a href="/mentions">Mentions Légales</a></li>
+            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+          </ul>
+        </div>
+      </div>
+
+      {% endblock %}
+  </footer>
 </body>
+
 </html>
 

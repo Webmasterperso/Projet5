@@ -1,0 +1,43 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ a_variable }}</h1>
+
+<section id='editartiste'>
+
+{% for artiste in dataartiste %}
+    <form action="/artisteedit" method="post" name="artiste">
+
+        <div>
+            <label for="titleartiste">Titre de l'artiste</label><br />
+            <input type="text" id="titleartiste" name="titleartiste" value="{{ artiste.artiste_title|e }}" />
+        </div>
+
+        <div>
+            <label for="photoartiste">Titre de l'artiste</label><br />
+            <input type="text" id="photoartiste" name="photoartiste" value="{{ artiste.artiste_photo|e }}" />
+        </div>
+
+        <div>
+            <label for="textartiste">Texte</label><br />
+            <textarea id="textartiste" name="textartiste" cols="600" rows="80">{{ artiste.artiste_text|e }}</textarea>
+        </div>
+
+        <div>
+            <input type="submit" name="Enregistrer" value="enregistrer" />
+        </div>
+    </form>
+{% endfor %}
+</section>
+
+
+
+{% endblock %}

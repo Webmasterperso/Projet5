@@ -29,7 +29,6 @@
     <script type="text/javascript">
       tinymce.init({
         selector: "textarea#textartiste",
-        
         menubar: 'edit'
       });
     </script>
@@ -71,7 +70,7 @@
           <li>|</li>
         </ul>
         <ul id="menuicon">
-          {% if session %}
+          {% if session.role %}
           <li>Bienvenue {{session.user|e}}</li>
           <li>Vous êtes {{session.role|e}}</li>
           <li><a href="/deconnect">Déconnection</a></li>
@@ -107,26 +106,34 @@
           <p class = "menufooterhead"> Vous et Nous </p>
           <ul class="menufooterul">
             <li><a href="/contact">Contact</a></li>
-            <li> <a href="/mentions">Mentions Légales</a></li>
-            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+            <li> <a href="/mentions">Demander une oeuvre personnelle</a></li>
+            <li> <a href="/mentions">Ouvrir un compte</a></li>
+            
           </ul>
         </div>
         <div id="menufootercenter">
           <p class = "menufooterhead"> Vous et Nous </p>
           <ul class="menufooterul">
             <li><a href="/contact">Contact</a></li>
-            <li> <a href="/mentions">Mentions Légales</a></li>
-            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+            <li> <a href="/mentions">Demander une oeuvre</a></li>
+            
+
+            
           </ul>
         </div>
         <div id="menufooterright">
-          <p class = "menufooterhead"> Vous et Nous </p>
+          <p class = "menufooterhead"> Informations </p>
           <ul class="menufooterul">
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact">Conditions générales</a></li>
             <li> <a href="/mentions">Mentions Légales</a></li>
-            <li>&copy; Copyright 2021 <a href="http://monsite.com"> Anne Madamet</a>.</li>
+            <li><a href="/contact">Plan du site</a></li>
+            <li> <a href="/mentions">Cookies</a></li>
+            
           </ul>
         </div>
+      </div>
+      <div id="menucopy">
+       - &copy; 2021 Anne Madamet -
       </div>
 
       {% endblock %}

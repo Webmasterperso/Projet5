@@ -466,15 +466,19 @@ class Control
         }
     }
 
-    function deconnect()
+    function deconnect() 
     {
 
-        $_SESSION = array();
+        //$_SESSION = array();
         // Destruction de la session
-        session_destroy();
+        // session_destroy();
         // Destruction du tableau de session
+        session_unset();
+        //session_start();
         unset($_SESSION);
-        unset($this->session);
+        //unset($this->session);
+        $this->session = null;
+        
         $this->template = 'Viewaccueil.twig';
     }
 

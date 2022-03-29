@@ -31,15 +31,9 @@ h3 {
 nav {
   
   height: 100px;
-  width: 100%;
-  /**background-color: rgba(61, 10, 10, 1);**/
-  /**background-image: url(/images/ecume_mer.jpg);**/
-  /**background-attachment:fixed;
-  background-repeat : repeat-x;**/
-  
+  width: 100%;  
   right: 0;
   top: 0;
-  /**position: fixed**/;
 }
 
 nav #menuband{
@@ -49,7 +43,6 @@ nav #menuband{
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 3%;
-  
 }
 
 nav #menuband ul{
@@ -60,35 +53,14 @@ nav #menuband ul{
   line-height: 80px;
 }
 
-#menufooter{
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  line-height: 40px;
-}
-
-.menufooterul{
-  /**list-style-image: url("/images/menured.png");**/
-  list-style-type: circle;
-}
-
-
-
-
-
 nav #menuband #menutext {
   width: 50%;
 }
+
 nav #menuband #menutext li a{
   color:white;
   text-shadow: 2px 2px 3px #08f314;
   text-decoration: none;
-}
-
-nav #menuband #menutext li{
-   text-shadow: 4px 4px 6px rgb(4, 234, 241);
-   color: white;
 }
 
 nav #menuband p {
@@ -96,31 +68,6 @@ nav #menuband p {
   margin: 0;
 
 }
-
-nav #menuband #menuicon{
-  width: 10%;
-  padding-left: 20px;
-  }
-
-
-nav #menuband #menuicon li a , .menufooterul li a{
-  /**display: block;
-  padding-top: 10px;
-  font-size: 15px;**/
-  color: white;
-  text-shadow: 3px 3px 4px #ac0606;
-  
-  }
-
-  
-
-nav #menuband #menuicon a:hover , .menufooterul a:hover{
-  color:#ac0606;
-  text-shadow: 1px 1px 1px white;
-  
-  }
-
-
 
 @keyframes chgmenu {
   0% {
@@ -168,13 +115,56 @@ nav #menuband #menuicon a:hover , .menufooterul a:hover{
   }
 }
 
-nav #menuband ul li a:hover{
+nav #menuband #menutext li a:hover{
   color:lemonchiffon;
   border-top: 3px solid white;
   
-  animation: chgmenu 0.5s forwards ease;
-  -webkit-animation: chgmenu 1s forwards ease;
+  animation: chgmenu 0.2s forwards ease;
+  -webkit-animation: chgmenu 0.2s forwards ease;
 }
+
+nav #menuband #menuicon{
+  width: 10%;
+  padding-left: 20px;
+  }
+
+nav #menuband #menuicon li a , .menufooterul li a{
+  color: white;
+  text-shadow: 3px 3px 4px #ac0606;
+  
+  }
+
+nav #menuband #menuicon a:hover , .menufooterul a:hover{
+  color:#ac0606;
+  text-shadow: 1px 1px 1px white;
+  
+  }
+
+#menufooter{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: 40px;
+}
+
+.menufooterul{
+  /**list-style-image: url("/images/menured.png");**/
+  list-style-type: circle;
+}
+
+.menufooterhead{
+  text-align: center;
+  font-weight: bold;
+  color:lemonchiffon;
+}
+
+#menucopy{
+  text-align: center;
+  color:lemonchiffon;
+}
+
+
 
 
 
@@ -204,16 +194,11 @@ font-style: italic;
   list-style-type: none;
 }
 
-#tableauoeuvres ul{
+
+#tableauoeuvres ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-
-
-#tableauoeuvres ul {
-  
   list-style-type: none;
   background-color: black;
   width: 15%;
@@ -249,7 +234,6 @@ font-style: italic;
 .tricategories {
   font-size: 15px;
   border-radius: 20px;
-  
   border: 4px double #85c872;
 }
 
@@ -258,12 +242,227 @@ font-style: italic;
 #slide{
   position: relative;
   display: flex;
-  height: 600px;
+  height: 70%;
   width: 70%;
   margin: 0 auto;
   border-radius: 40px;
-  box-shadow: 5px 5px 15px 5px gray, -1px -1px 10px 5px #85c872;
-  background-color: white;
+  /**box-shadow: 5px 5px 15px 5px gray, -1px -1px 10px 5px #85c872;
+  background-color: white;**/
+}
+
+#slide_left {
+  position: absolute;
+  top: 250px;
+  left: -60px;
+  color: white;
+  text-shadow: 3px 3px 4px #ac0606;
+  text-align: left; /**sens inverse car transform scaleX**/
+  border-top-left-radius: 25%;
+  font-size: 45px;
+  z-index: 100;
+}
+
+#slide_left i:hover{
+  color:#ac0606;
+  text-shadow: 1px 1px 1px white;
+  cursor: pointer;
+}
+
+#slide_left i:active{
+  color:lemonchiffon;
+  transform : rotate(-45deg);
+}
+
+#slide_right {
+  position: absolute;
+  top: 250px;
+  right: -60px;
+  color: white;
+  text-shadow: 3px 3px 4px #ac0606;
+  text-align: left;
+  border-top-left-radius: 25%;
+  border-bottom-left-radius: 25%;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  font-size: 45px;
+  z-index: 100;
+}
+
+#slide_right i:hover{
+  color:#ac0606;
+  text-shadow: 1px 1px 1px white;
+  cursor: pointer;
+}
+
+#slide_right i:active{
+  color:lemonchiffon;
+  transform : rotate(-45deg);
+}
+
+.slide_jauge{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.slide_jauge_plein, .slide_jauge_vide{
+  margin: 5px;
+}
+
+#oeuvre , #contact form{
+ 
+ height: 100%;
+ width: 100%;
+ padding : 10px;
+ 
+}
+
+@keyframes chgimagein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes chgimagein {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes chgimageout {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes chgimageout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.diapo {
+  display:none;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 85%;
+  margin-block-start: 0.8em;
+  background-color: black;
+  font-size: 18px;
+  border: 4mm ridge rgba(116, 85, 56, 0.7);
+  animation: chgimagein 1s ease;
+  -webkit-animation: chgimagein 1.5s ease;
+  animation: chgimageout 1s ease;
+  -webkit-animation: chgimageout 1.5s ease;
+}
+
+
+
+.diapo:nth-child(1) {
+  display: flex;
+}
+
+.iconeoeuvre , .iconeactualite {
+  max-width: 6em;
+  min-width: 6em;
+}
+
+.image{
+   width: 40%;
+   margin: 0 auto;
+}
+
+.image .images {
+    
+  max-width: 100%;
+  max-height: auto;
+  margin: 0 auto;
+}
+
+.detailsoeuvre{
+  width: 60%;
+  padding:10px;
+
+}
+
+.detailsoeuvre ul {
+  list-style-type: none;
+}
+
+.detailsoeuvre ul li {
+  display: block;
+  color:lemonchiffon;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom : 1px solid lemonchiffon;
+}
+.detailsoeuvre ul li #logovendu {
+  
+  max-width: 25%;
+  max-height: 25%;
+  margin: 0 auto;
+}
+
+
+.tableeditoeuvre{
+  width: 90%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lemonchiffon ;
+}
+
+.tablenewoeuvre, .tablenewactualite{
+  background-color: gray;
+  margin-bottom: 20px;
+}
+
+.tablenewoeuvre thead tr, .tablenewactualite thead tr{
+  height: 35px;
+  text-align: center;
+  background-color:rgba(206, 6, 6, 0.479);
+  color: lemonchiffon;
+}
+
+.tableeditoeuvre thead tr, .tableeditactualite thead tr{
+  height: 35px;
+  text-align: left;
+  background-color: lemonchiffon;
+}
+
+.tableeditoeuvre tbody tr , .tablenewoeuvre tbody tr, .tableeditactualite tbody tr, .tablenewactualite tbody tr{
+  
+  font-size: 15px;
+  vertical-align: middle;
+  align-items: center;
+  text-align:left;
+  padding-bottom: 20px;
+  color:lemonchiffon;
+  border-bottom: 3px solid lemonchiffon ;
+}
+
+.tableeditoeuvre tbody tr td , .tablenewoeuvre tbody tr td, .tableeditactualite tbody tr td , .tablenewactualite tbody tr td{
+  border-right: 50px;
+  border-left: 20px;
+}
+
+.champoeuvre , .champactualite{
+  background-color: black;
+  max-width: 400px;
+  color:lemonchiffon;
 }
 
 #contact , #connection {
@@ -324,197 +523,6 @@ input[type=submit] {
 }
 #btsave:active, #btsavenew:active{
   box-shadow: 1px 1px 3px rgb(37, 126, 2);
-}
-
-
-#slide_left {
-  position: absolute;
-  top: 220px;
-  left: -60px;
-  text-align: left; /**sens inverse car transform scaleX**/
-  border-top-left-radius: 25%;
-  font-size: 45px;
-  z-index: 100;
-}
-
-#slide_left :hover{
-  color:lemonchiffon;
-  text-shadow: -5px 0px 15px #85c872;
-}
-
-#slide_left :active{
-  
-  transform : rotate(-45deg);
-}
-
-#slide_right {
-  position: absolute;
-  top: 220px;
-  right: -60px;
-  text-align: left;
-  border-top-left-radius: 25%;
-  border-bottom-left-radius: 25%;
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  font-size: 45px;
-  z-index: 100;
-}
-
-#slide_right :hover{
-  color:lemonchiffon;
-  text-shadow: -5px 0px 15px#85c872;
-}
-
-#slide_right :active{
-  color:lemonchiffon;
-  transform : rotate(-45deg);
-}
-
-#oeuvre , #contact form{
- border-radius: 40px;
- height: 100%;
- width: 100%;
- padding : 10px;
- 
-}
-
-@keyframes chgimagein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes chgimagein {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes chgimageout {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes chgimageout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.diapo {
-  display:none;
-  flex-direction: row;
-  justify-content: flex-start;
-  height: 85%;
-  margin-block-start: 0.8em;
-  background-color: black;
-  font-size: 18px;
-  border: 4mm ridge rgba(116, 85, 56, 0.7);
-
-  
-
-  animation: chgimagein 1s ease;
-  -webkit-animation: chgimagein 1.5s ease;
-
-  animation: chgimageout 1s ease;
-  -webkit-animation: chgimageout 1.5s ease;
-}
-
-
-
-.diapo:nth-child(1) {
-  display: flex;
-}
-
-.iconeoeuvre , .iconeactualite {
-  max-width: 6em;
-  min-width: 6em;
-}
-
-.image img {
-    
-   max-height: 100%;
-    margin: 0 auto;
-}
-
-#detailsoeuvre {
-  list-style-type: none;
-  color:lemonchiffon;
-  width: 60%;
-
-}
-
-#detailsoeuvre li {
-  display: block;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  border-bottom : 1px solid lemonchiffon;
-}
-#detailsoeuvre li #logovendu {
-  height: 100px;
-}
-
-
-.tableeditoeuvre{
-  width: 90%;
-  padding-bottom: 20px;
-  border-bottom: 1px solid lemonchiffon ;
-}
-
-.tablenewoeuvre, .tablenewactualite{
-  background-color: gray;
-  margin-bottom: 20px;
-}
-
-.tablenewoeuvre thead tr, .tablenewactualite thead tr{
-  height: 35px;
-  text-align: center;
-  background-color:rgba(206, 6, 6, 0.479);
-  color: lemonchiffon;
-}
-
-.tableeditoeuvre thead tr, .tableeditactualite thead tr{
-  height: 35px;
-  text-align: left;
-  background-color: lemonchiffon;
-}
-
-.tableeditoeuvre tbody tr , .tablenewoeuvre tbody tr, .tableeditactualite tbody tr, .tablenewactualite tbody tr{
-  
-  font-size: 15px;
-  vertical-align: middle;
-  align-items: center;
-  text-align:left;
-  padding-bottom: 20px;
-  color:lemonchiffon;
-  border-bottom: 3px solid lemonchiffon ;
-}
-
-.tableeditoeuvre tbody tr td , .tablenewoeuvre tbody tr td, .tableeditactualite tbody tr td , .tablenewactualite tbody tr td{
-  border-right: 50px;
-  border-left: 20px;
-}
-
-.champoeuvre , .champactualite{
-  background-color: black;
-  max-width: 400px;
-  color:lemonchiffon;
 }
 
 #description{

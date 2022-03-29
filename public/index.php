@@ -13,7 +13,7 @@ $uri = substr($uri,1);
 //echo 'uri : '.$uri.'</br>';
 
 
-//echo'<a href="/Mes oeuvres">Mes oeuvres</a></li>';
+echo'<a href="/oeuvres">'. $uri .'</a></li>';
 
 
 

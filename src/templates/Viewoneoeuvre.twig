@@ -26,48 +26,59 @@
                 <figure id="diapo1" class="diapo">
                 {% set firstoeuvre = oeuvre1.oeuvre_id %}
                     <div class="image">
-                    <img src="/imagesoeuvres/{{oeuvre1.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
+                        <img src="/imagesoeuvres/{{oeuvre1.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
                     </div>
-                    <ul id="detailsoeuvre">
-                        <li>numéro de l'oeuvre: {{ oeuvre1.oeuvre_id|e }}</li>
-                        <li>titre oeuvre: {{ oeuvre1.oeuvre_titre|e }}</li>
-                        <li>description oeuvre : {{ oeuvre1.oeuvre_description|e('html') }}</li>
-                        <li>Prix : {{ oeuvre1.oeuvre_prix|e }} €</li>
-                        {% if oeuvre1.oeuvre_statut == "vendu" %}
-                        
-                        <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
-                        {% endif %}
-                    </ul>
+                    <div class="detailsoeuvre">
+                        <ul>
+                            <li>numéro de l'oeuvre: {{ oeuvre1.oeuvre_id|e }}</li>
+                            <li>titre : {{ oeuvre1.oeuvre_titre|e }}</li>
+                            <li>description : {{ oeuvre1.oeuvre_description|e('html') }}</li>
+                            <li>Prix : {{ oeuvre1.oeuvre_prix|e }} €</li>
+                            {% if oeuvre1.oeuvre_statut == "vendu" %}
+                            <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </figure>
+                <div class="slide_jauge">
+                    <div class="slide_jauge_plein"> <i class="fa fa-circle" aria-hidden="true"></i></div>
+                    
+                </div>
             {% endfor %} 
             
             {% for oeuvre in data %}
                 
                 {% set numero = numero + 1 %}
-                
-                    
-                    {% if oeuvre.oeuvre_id != firstoeuvre %}
-                        <figure id="diapo{{ numero }}" class="diapo">  
+                {% if oeuvre.oeuvre_id != firstoeuvre %}
+                    <figure id="diapo{{ numero }}" class="diapo">  
                         <div class="image">
-                        <img src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
+                            <img src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="photo" id="pictures1" class="images" />
                         </div>
-                        <ul id="detailsoeuvre">
-                            <li>numéro de l'oeuvre: {{ oeuvre.oeuvre_id|e }}</li>
-                            <li>titre oeuvre: {{ oeuvre.oeuvre_titre|e }}</li>
-                            <li>description oeuvre : {{ oeuvre.oeuvre_description|e }}</li>
-                            <li>Prix : {{ oeuvre.oeuvre_prix|e }} €</li>
-                            {% if oeuvre.oeuvre_statut == "vendu" %}
-                            
-                            <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
-                            {% endif %}
-                        </ul>
-                    {% else %}
-                        {% set numero = numero - 1 %}
-                    
-                    {% endif %}
-                </figure>
+                        <div class="detailsoeuvre">
+                            <ul>
+                                <li>numéro : {{ oeuvre.oeuvre_id|e }}</li>
+                                <li>titre : {{ oeuvre.oeuvre_titre|e }}</li>
+                                <li>description : {{ oeuvre.oeuvre_description|e }}</li>
+                                <li>Prix : {{ oeuvre.oeuvre_prix|e }} €</li>
+                                {% if oeuvre.oeuvre_statut == "vendu" %}
+                                    <li><img src="/images/vendu.png" alt="Vendu" id="logovendu" class="logovendu" /></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </figure>
+                    <div class="slide_jauge">
+                        
+                        <div class="slide_jauge_vide"><i class="fa fa-circle-o" aria-hidden="true"></i></div>
+                    </div>
+                {% else %}
+                    {% set numero = numero - 1 %}
+                {% endif %}
+                
             {% endfor %} 
         </section>
+        
+
+
         
 
     </section>

@@ -1,0 +1,26 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}
+Mon panier sur le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
+{% endblock %}
+
+{% block content %}
+    <h1>{{ a_variable }}</h1>
+    <section id="panier">
+        
+        <section id="listeoeuvrespanier">
+        </section>
+
+        <section id="bilanpanier">
+        </section>
+
+    </section>
+    
+{% endblock %}
+

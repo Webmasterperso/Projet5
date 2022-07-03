@@ -1,60 +1,63 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Les actulalités d'Anne Madamet
+{% block title %}
+Les actulalités d'Anne Madamet
 {% endblock %}
 
 {% block head %}
 {{ parent() }}
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
 {% endblock %}
 
 {% block content %}
-    <h1>{{ a_variable }}</h1>
+    
+    {% if session.role == "admin" %}
+        <h1>{{ a_variable }}</h1>
 
-    <xection id="newactualite">
-        <table class="tablenewactualite">
-            <thead>
-                <tr>
-                    <th COLSPAN=7>Nouvelle actualité</th>
-                </tr>
-                <tr>
-                <th class = "alerte" COLSPAN=7>{{ a_alerte }}</th>
-                </tr>
-                
-                <tr>
+        <section id="newactualite">
+            <table class="tablenewactualite">
+                <thead>
+                    <tr>
+                        <th COLSPAN=9>Nouvelle actualité</th>
+                    </tr>
+                    <tr>
+                    <th class = "alerte" COLSPAN=9>{{ a_alerte }}</th>
+                    </tr>
+
+                    <tr>
                     <th> Photo</th>
                     <th> N°</th>
                     <th> Titre</th>
                     <th> Date</th>
                     <th> Description</th>
                     <th> Lien photo</th>
-                    <th> </th>
+                    <th> Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                </tr>
-            </thead>
-            <tbody>
-            
-                <tr>
-                    <form action="/actualiteedit" method="post" name="actualites" enctype="multipart/form-data">
-                        <td><img class="iconeactualite" src="" alt="la photo" id="photo" /></td>
-                        <td>N°</td>
-                        <td><input class = "champoeuvre" type="text" id="titre" name="titre" placeholder="Titre de l'actualité"/></td>
-                        <td><input class = "champoeuvre" type="text" id="date" name="date" placeholder="mois année"/></td>
-                        <td><textarea class = "champoeuvre" id="description" name="description" placeholder="Description de l'actualité"></textarea></td>
-                        <td><input class = "champoeuvre" type="text" id="lien" name="lien" placeholder="Lien de la photo"/>
-                            <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
-                        <td><input class = "btform" id = "btsavenew" type="submit" name="Enregistrernew" value="Enregistrer" /></td>
-                    </form>
-                </tr>
-            </tbody>
+                    <tr>
+                        <form action="/actualiteedit" method="post" name="actualites" enctype="multipart/form-data">
+                            <td><img class="iconeactualite" src="" alt="la photo" id="photo" /></td>
+                            <td>N°</td>
+                            <td><input class = "champoeuvre" type="text" id="titre" name="titre" placeholder="Titre de l'actualité"/></td>
+                            <td><input class = "champoeuvre" type="text" id="date" name="date" placeholder="mois année"/></td>
+                            <td><textarea class = "champoeuvre" id="description" name="description" placeholder="Description de l'actualité"></textarea></td>
+                            <td><input class = "champoeuvre" type="text" id="lien" name="lien" placeholder="Lien de la photo"/>
+                                <input type="file" id="fichier" name="fichier" accept=".jpg, .jpeg, .png, .gif"/></td>
+                            <td><input class = "btform" id = "btsavenew" type="submit" name="Enregistrernew" value="Enregistrer" /></td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-        </table>
-    </section>
-
-    <xection id="listeactualité">
-        <table class="tableeditactualite">
+        <section id="listeactualité">
+            <table class="tableeditactualite">
             <thead>
                 <tr>
-                    <th COLSPAN=7>Liste actualités</th>
+                    <th COLSPAN=9>Liste actualités</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,9 +80,9 @@
                 </tr>
             {% endfor %}
             </tbody>
-        </table>
-    </section>
-    <xection id="listeactualité2">
-        <h2>essai 2ème section</h2>
-    </section>    
+            </table>
+        </section>
+    {% else %}
+        <p class = "alerte">Vous n'avez pas les accès !!!</p>
+    {% endif %}
 {% endblock %}

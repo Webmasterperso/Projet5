@@ -1,6 +1,7 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Le site d'Anne Madamet
+{% block title %}
+Biographie de l'artiste peintre Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -19,11 +20,12 @@
             <h3>{{ artiste.artiste_title|e }}</h3>
             <div id="imageartiste">
                 
-                <img src="/images/{{artiste.artiste_photo|e}}" alt="portrait" id="photo" />
+                <img src="{{ base }}/images/{{artiste.artiste_photo|e}}" title="Portrait d'Anne Madamet" alt="portrait artiste" id="photo" />
             </div>
             <div id="artistedescrip">                    
                 {{ artiste.artiste_text|raw }}
              </div>
+             
 
         </div>
 

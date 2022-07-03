@@ -5,6 +5,8 @@
 
 {% block head %}
 {{ parent() }}
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
 {% endblock %}
 
 {% block content %}
@@ -16,20 +18,52 @@
         <h2 class = "alerte">{{ a_alerte }}</h1>
 
         <div class = "formulaire">
-            <form action="/connectnew" method="post" name="users">
-                
-                <div>
-                    <label for="pseudo">Pseudo</label><br />
-                    <input type="text" id="pseudo" name="pseudo" />
-                </div>                
-                <div>
-                    <label for="mdp">Mot de Passe</label><br />
-                    <input type="password" id="mdp" name="mdp" />
+            <form action="{{ base }}/connectnew" method="post" name="users">
+                <fieldset><legend>Données de connection</legend>
+                <div id="userconnect">
+                    <div>
+                        <label for="pseudo">Pseudo</label><br />
+                        <input type="text" id="pseudo" name="pseudo" />
+                    </div>                
+                    <div>
+                        <label for="mdp">Mot de Passe</label><br />
+                        <input type="password" id="mdp" name="mdp" />
+                    </div>
                 </div>
-                <div>
-                    <label for="mail">Adresse mail</label><br />
-                    <input type="email" id="mail" name="mail" />
+                </fieldset>
+
+                <fieldset><legend>Coordonnées</legend>
+                <div id="useradress">
+                    <div>
+                        <label for="nom">Nom</label><br />
+                        <input type="text" id="nom" name="nom" />
+                    </div>
+                    <div>
+                        <label for="prenom">Prénom</label><br />
+                        <input type="text" id="prenom" name="prenom" />
+                    </div>
+                    <div>
+                        <label for="adresse">Adresse</label><br />
+                        <input type="text" id="adresse" name="adresse" />
+                    </div>
+                    <div>
+                        <label for="cp">Code Postal</label><br />
+                        <input type="text" id="cp" name="cp" />
+                    </div>
+                    <div>
+                        <label for="ville">Ville</label><br />
+                        <input type="text" id="ville" name="ville" />
+                    </div>
+                    <div>
+                        <label for="mail">Adresse mail</label><br />
+                        <input type="email" id="mail" name="mail" />
+                    </div>
+                    <div>
+                        <label for="tel">Téléphone</label><br />
+                        <input type="text" id="tel" name="tel" />
+                    </div>
                 </div>
+                </fieldset>
                 <div>
                     <input type="submit" />
                 </div>

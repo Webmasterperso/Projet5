@@ -1,0 +1,74 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}Le site d'Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ a_variable }}</h1>
+
+    <section id='connection'>
+    
+        <h2 class = "alerte">{{ a_alerte }}</h1>
+
+        <div class = "formulaire">
+        <P> Voici vos données de profil, vous pouvez les modifier directement :</p>
+            <form action="{{ base }}/connectprofil" method="post" name="users">
+                 <div>
+                    <label for="nmrclient">N° de client : {{session.id|e}} </label>
+                    <input type="hidden" id="nmrclient" name="nmrclient" value="{{session.id|e}}"/>
+                </div>
+                <div>
+                    <label for="pseudo">Pseudo</label><br />
+                    <input type="text" id="pseudo" name="pseudo" value="{{session.user|e}}"/>
+                </div>                
+                <div>
+                    <label for="mdp">Mot de Passe</label><br />
+                    <input type="password" id="mdp" name="mdp" value="{{session.mdp|e}}"/>
+                </div>
+                <div>
+                    <label for="mail">Adresse mail</label><br />
+                    <input type="email" id="mail" name="mail" value="{{session.mail|e}}"/>
+                </div>
+                <div>
+                    <label for="nom">Nom</label><br />
+                    <input type="text" id="nom" name="nom" value="{{session.nom|e}}"/>
+                </div>
+                <div>
+                    <label for="prenom">Prénom</label><br />
+                    <input type="text" id="prenom" name="prenom" value="{{session.prenom|e}}"/>
+                </div>
+                <div>
+                    <label for="adresse">Adresse</label><br />
+                    <input type="text" id="adresse" name="adresse" value="{{session.adresse|e}}"/>
+                </div>
+                <div>
+                    <label for="cp">Code Postal</label><br />
+                    <input type="text" id="cp" name="cp" value="{{session.cp|e}}"/>
+                </div>
+                <div>
+                    <label for="ville">Ville</label><br />
+                    <input type="text" id="ville" name="ville" value="{{session.ville|e}}"/>
+                </div>
+                <div>
+                    <label for="telephone">téléphone</label><br />
+                    <input type="text" id="telephone" name="telephone" value="{{session.telephone|e}}"/>
+                </div>
+                
+                <div>
+                    <input type="submit" name="Modifier" value="Enregistrer les modifications" />
+                </div>
+            </form>
+            <p>Tous les champs sont obligatoires</p>
+         </div>
+    </section>
+
+
+
+{% endblock %}

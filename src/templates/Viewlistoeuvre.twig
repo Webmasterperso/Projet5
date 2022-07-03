@@ -1,6 +1,7 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Les oeuvres d'Anne Madamet
+{% block title %}
+Les oeuvres de l'artiste peintre Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -12,43 +13,105 @@
     <h1>{{ a_variable }}</h1>
 
     <section id="trioeuvres">
+    
+        <fieldset><legend>Filtres</legend>
+        
+        <section id = "trioeuvre">
+        
+            <section id = "select-cat">
+                <label for="tricategories">Catégories</label></br>
+                <div class="select-cat--container">
+                    <select name="tricat" id="tricategories">
+                        {% if rangcat == 0 %}
+                            <option value="0" selected>-- Toutes --</option>
+                        {% else %}
+                            <option value="0">-- Toutes --</option>
+                        {% endif %}
 
-        <label for="tricategories">Catégories des oeuvres : </label>
+                        {% for categorie in datacat %}
 
-        <select name="tricategories" class="tricategories">
-            {% if rang == 0 %}
-                <option value="0" selected>-- Toutes --</option>
+                            {% if rangcat == categorie.categorie_id %}
+                                <option value="{{ categorie.categorie_id|e }}" selected>{{ categorie.categorie_nom|e }}</option>
+                            {% else %}
+                                <option value="{{ categorie.categorie_id|e }}">{{ categorie.categorie_nom|e }}</option>
+                            {% endif %}
+
+                        {% endfor %}
+                
+                    </select>
+                </div>
+            </section>
+
+            <section id = "triprix">
+                <label for="tripri">Prix</label>
+                <div class="select-prix">
+                    <range-selector
+                        class="tripri"
+                        id="yearRangeSelector"
+                        event-name-to-emit-on-change="change"
+                        min-label="Minimum Range"
+                        max-label="Maximum Range"
+                        min-range="0"
+                        max-range="3000"
+                        inputs-for-labels
+                        slider-color="#ac0606"
+                        circle-color="white"
+                        circle-border-color="#ac0606"
+                        circle-focus-border-color="#white"
+                        circle-focus-color="#ac0606"
+                    />
+                </div>
+                <div id="detail-tri-prix">
+                    <p></p>
+                </div>
+                
+            </section>
+       
+        {#<label for="tripri">Prix : </label>
+
+        <select name="tripr" class="tripr">
+            {% if rangprix == 0 %}
+                <option value="0" selected>-- Tout --</option>
             {% else %}
-                <option value="0">-- Toute --</option>
+                <option value="0">-- Tout --</option>
             {% endif %}
 
-            {% for categorie in datacat %}
+            {% for prix in data %}
 
-                {% if rang == categorie.categorie_id %}
-                    <option value="{{ categorie.categorie_id|e }}" selected>{{ categorie.categorie_nom|e }}</option>
+                {% if rangprix == prix.oeuvre_prix %}
+                    <option value="{{ prix.oeuvre_id|e }}" selected>{{ prix.oeuvre_prix|e }}</option>
                 {% else %}
-                    <option value="{{ categorie.categorie_id|e }}">{{ categorie.categorie_nom|e }}</option>
+                    <option value="{{ prix.oeuvre_id|e }}">{{ prix.oeuvre_prix|e }}</option>
                 {% endif %}
 
             {% endfor %}
     
-        </select>
+        </select>#}
+        </section>
+        </fieldset>
+
 
     </section>
 
     <section id="tableauoeuvres">
        
         {% for oeuvre in data %}
-            <ul>
-                
-                <li><a href="/oeuvre/{{ rang }}/{{ oeuvre.oeuvre_id|e }}"><img src="/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" alt="la photo" id="photo" /></a></li>
-                <li>{{ oeuvre.oeuvre_titre|raw }}</li>
-            
-            </ul>
-
+        <div class="tableauoeuvre">
+            <figure class="figoeuvre">
+                <ul>
+                    <li>{{ oeuvre.oeuvre_titre|raw }}</li>
+                    <li><a href="{{ base }}/oeuvre/{{ rangcat }}/{{ oeuvre.oeuvre_id|e }}"><img src="{{ base }}/imagesoeuvres/{{oeuvre.oeuvre_lien|e}}" title="{{ oeuvre.oeuvre_titre|e }}" alt="Photo de {{ oeuvre.oeuvre_titre|e }}" class="photo" /></a></li>
+                    <li>{{ oeuvre.oeuvre_prix|raw }} €</li>
+                </ul>
+                <figcaption>
+                    
+                    {{ oeuvre.oeuvre_description|raw }}
+                </figcaption>
+            </figure>
+        </div>
         {%  else  %}
             Aucune oeuvre n'a été trouvée.
         {% endfor %}            
-     </section>   
+    </section>   
     
 {% endblock %}

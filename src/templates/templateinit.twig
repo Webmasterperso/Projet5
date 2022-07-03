@@ -1,144 +1,157 @@
 <!DOCTYPE html>
-{{ attribute.text|html_entity_decode }}
+
 <html lang="fr">
-<head>
-    {% block head %}
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a1efcfbe5e.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/90392667fd.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/jspoo/SelectObjet.js" defer></script>
-    <script type="text/javascript" src="/jspoo/SlideObjet.js" defer></script>
-    <script type="text/javascript" src="/jspoo/javamanager.js" defer></script>
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <!-- fin favicon -->
-    <!--  tinymce  -->
-    <script src="https://cdn.tiny.cloud/1/qfw6s6sx4pvsntv7t1in07fn2m1jxkuutrinitvom3b8kpfj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script type="text/javascript">
-      tinymce.init({
-        selector: "textarea#textartiste",
-        menubar: 'edit'
-      });
-    </script>
-    <!--  Fin tinymce  -->
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="description" content="Site de présentation et de vente du catalogue des peintures d'Anne Madamet
+      Animaux sauvages, chasse, paysages, au crayon ou aquarelle" />
+      <meta name="robots" content="index"/>
+      <meta name="googlebot" content="index"/>
+      <link rel="canonical" href="https://www.anne-madamet.com/" />
+      <!-- META VIEWPORT permet de controler le zoom et la mise en page sur les navigateur mobile et tablette -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="msapplication-TileColor" content="#da532c"/>
+      <meta name="msapplication-config" content="{{ base }}/favicon/browserconfig.xml"/>
+      <meta name="theme-color" content="#ffffff"/>
+
+      <!-- favicon -->
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ base }}/favicon/apple-touch-icon.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="{{ base }}/favicon/favicon-32x32.png"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ base }}/favicon/favicon-16x16.png"/>
+      <link rel="manifest" href="{{ base }}/favicon/site.webmanifest"/>
+      <link rel="mask-icon" href="{{ base }}/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+      <link rel="shortcut icon" href="{{ base }}/favicon/favicon.ico"/>
+      <!-- fin favicon -->
+
+      <!-- Styles et polices -->
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com"/>
+      <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet"/>
+      <script src="https://kit.fontawesome.com/a1efcfbe5e.js" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/90392667fd.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="{{ base }}/style.css" />
+      <!-- Fin Styles et polices -->
+
+      <script type="text/javascript" src="{{ base }}/jspoo/SlideObjetaccueil.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/SelectObjet.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/SlideObjet.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/DiversObjet.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/PanierIn.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/Commande.js" defer></script>
+      <script type="text/javascript" src="{{ base }}/jspoo/javamanager.js" defer></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script>
+      
+      <!--  tinymce  -->
+      <script src="https://cdn.tiny.cloud/1/qfw6s6sx4pvsntv7t1in07fn2m1jxkuutrinitvom3b8kpfj/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+      <script type="text/javascript">
+        tinymce.init({
+          selector: "textarea#textartiste",
+          menubar: 'edit'
+        });
+      </script>
+      {% block javascript %}{% endblock %}
+      <!--  Fin tinymce  -->
 
 
-    <title>{% block title %}{% endblock %}</title>
-    
-    <!-- META VIEWPORT permet de controler le zoom et la mise en page sur les navigateur mobile et tablette -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% endblock %}
-</head>
+      <title>{% block title %}{% endblock %}</title>
 
-<body>
+  </head>
 
-  <header>
-    <!--logo et menu-->
-    <nav>
-      <div id="menuband">
-        <p>
-          <a href="/accueil"><img src="/images/logo.png" alt = "logo" class = "logo" /></a>
-        </p>
-        <ul id="menutext">
-          <li><a href="/accueil">Accueil</a></li>
-          <li>|</li>
-          {% if session.role == "admin" %}
-          <li><a href="/actualiteedit">Actualités</a></li>
-          <li>|</li>
-          <li><a href="/oeuvreedit">Oeuvres</a></li>
-          <li>|</li>
-          <li><a href="/artisteedit">L'artiste</a></li>
-          {% else %}
-          <li><a href="/actualite">Actualités</a></li>
-          <li>|</li>
-          <li><a href="/oeuvrescat/0">Oeuvres</a></li>
-          <li>|</li>
-          <li><a href="/artiste">L'artiste</a></li>
-          {% endif %}
-          <li>|</li>
-        </ul>
-        <ul id="menuicon">
+  <body>
+
+    <header id="header">
+      <!--logo et menu-->
+      <nav>
+        <div id="menuband">
+          <p>
+            <a href="{{ base }}/accueil"><img src="{{ base }}/images/logo.png" TITLE = "Anne Madamet" alt = "logo" class = "logo" /></a>
+          </p>
+          <ul id="menutext">
+            <li><a href="{{ base }}/accueil">Accueil</a></li>
+            <li>|</li>
+            {% if session.role == "admin" %}
+            <li><a href="{{ base }}/actualiteedit">Actualités</a></li>
+            <li>|</li>
+            <li><a href="{{ base }}/oeuvreedit">Oeuvres</a></li>
+            <li>|</li>
+            <li><a href="{{ base }}/artisteedit">L'artiste</a></li>
+            {% else %}
+            <li><a href="{{ base }}/actualite">Actualités</a></li>
+            <li>|</li>
+            <li><a href="{{ base }}/oeuvrescat/0">Oeuvres</a></li>
+            <li>|</li>
+            <li><a href="{{ base }}/artiste">L'artiste</a></li>
+            {% endif %}
+            <li>|</li>
+          </ul>
+          <ul id="menuicon">
+            <li><a href="{{ base }}/contact" title="contacter l'artiste"><em class="fa-regular fa-envelope" aria-hidden="true"></em></a></li>
+            <li><a id="btpanier" href="{{ base }}/panier" title="accéder à mon panier"><em class="fa-solid fa-cart-shopping" aria-hidden="true"></em></a></li>
+          </ul>
           {% if session.role %}
-          <li>Bienvenue {{session.user|e}}</li>
-          <li>Vous êtes {{session.role|e}}</li>
-          <li><a href="/deconnect">Déconnection</a></li>
+          <ul id = "menusession">
+            <li>Bienvenue {{session.user|e}}</li>
+            <!--<li>Vous êtes {{session.role|e}}</li>-->
+            <li><a href="{{ base }}/deconnect">Déconnection</a></li>
+          </ul>
           {% else %}
-          <!-- regular style -->
-          <li><a href="/connect"><i class="fa-regular fa-user"></i></a></li>
+          <ul id = "menusession">
+            <!-- regular style -->
+            <li><a href="{{ base }}/connect" title="se connecter"><em class="fa-regular fa-user"> Mon compte</em></a></li>
+          </ul>
           {% endif %}
-          <li><a href="/contact"><i class="fa-solid fa-cart-shopping"></i></a></li>
-          <li><a href="/contact"><i class="fa-regular fa-envelope"></i></a></li>
-        </ul>
-      </div>
-    </nav>
 
-    <section id="fenetre">
-
-
-    </section>
-  </header>
-
-
-
-  <section id="content">
-    {% block content %}
-
-    {% endblock %}
-  </section>
-
-
-  <footer id="footer">
-      {% block footer %}
-      <div id="menufooter">
-        <div id="menufooterleft">
-          <p class = "menufooterhead"> Vous et Nous </p>
-          <ul class="menufooterul">
-            <li><a href="/contact">Contact</a></li>
-            <li> <a href="/mentions">Demander une oeuvre personnelle</a></li>
-            <li> <a href="/mentions">Ouvrir un compte</a></li>
-            
-          </ul>
         </div>
-        <div id="menufootercenter">
-          <p class = "menufooterhead"> Vous et Nous </p>
-          <ul class="menufooterul">
-            <li><a href="/contact">Contact</a></li>
-            <li> <a href="/mentions">Demander une oeuvre</a></li>
-            
+      </nav>
 
-            
-          </ul>
-        </div>
-        <div id="menufooterright">
-          <p class = "menufooterhead"> Informations </p>
-          <ul class="menufooterul">
-            <li><a href="/contact">Conditions générales</a></li>
-            <li> <a href="/mentions">Mentions Légales</a></li>
-            <li><a href="/contact">Plan du site</a></li>
-            <li> <a href="/mentions">Cookies</a></li>
-            
-          </ul>
-        </div>
-      </div>
-      <div id="menucopy">
-       - &copy; 2021 Anne Madamet -
-      </div>
-
+      <section id="fenetre">
+      </section>
+    </header>
+    <section id="content">
+      {% block content %}
       {% endblock %}
-  </footer>
-</body>
+    </section>
+    
+    <footer id="footer">
+        {% block footer %}
+        <div id="menufooter">
+          <div id="menufooterleft">
+            <p class = "menufooterhead"> Vous et Nous </p>
+            <ul class="menufooterul">
+              <li><a href="{{ base }}/contact">Contact</a></li>
+              <li> <a href="{{ base }}/mentions">Demander une oeuvre personnelle</a></li>
+              <li> <a href="{{ base }}/mentions">Ouvrir un compte</a></li>
+
+            </ul>
+          </div>
+          <div id="menufootercenter">
+            <p class = "menufooterhead"> Vous et Nous </p>
+            <ul class="menufooterul">
+              <li><a href="{{ base }}/contact">Contact</a></li>
+              <li> <a href="{{ base }}/mentions">Demander une oeuvre</a></li>
+
+
+
+            </ul>
+          </div>
+          <div id="menufooterright">
+            <p class = "menufooterhead"> Informations </p>
+            <ul class="menufooterul">
+              <li><a href="{{ base }}/contact">Conditions générales</a></li>
+              <li> <a href="{{ base }}/mentions">Mentions Légales</a></li>
+              <li><a href="{{ base }}/contact">Plan du site</a></li>
+              <li> <a href="{{ base }}/mentions">Cookies</a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div id="menucopy">
+         - &copy; 2021 Anne Madamet -
+        </div>
+
+        {% endblock %}
+    </footer>
+  </body>
 
 </html>
 

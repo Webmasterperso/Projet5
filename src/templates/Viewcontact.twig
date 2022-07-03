@@ -1,6 +1,7 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Le site d'Anne Madamet
+{% block title %}
+Contact sur le site d'Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -14,23 +15,33 @@
     <section id='contact'>
         <div class = "formulaire">
 
-            <form action="/contact" method="post" enctype="application/x-www-form-urlencoded" name="contact">
+            <form action="{{ base }}/contact" method="post" enctype="multipart/form-data" name="contact">
             
                 <div>
-                    <label for="author">Nom</label><br />
+                    <label for="nom">Nom</label><br />
                     <input type="text" id="nom" name="nom" />
                 </div>
                 <div>
-                    <label for="author">Prénom</label><br />
+                    <label for="prenom">Prénom</label><br />
                     <input type="text" id="prenom" name="prenom" />
                 </div>
                 <div>
-                    <label for="author">Mail</label><br />
+                    <label for="mail">Mail</label><br />
                     <input type="email" id="mail" name="mail" />
                 </div>
-                <div>
-                    <label for="textcomment">Votre demande</label><br />
-                    <textarea id="demande" name="demande" cols="80" rows="10"></textarea>
+                <div id="divsendpicture">
+                    <div>
+                        <input type="checkbox" id="envoiphotoid" name="envoiphoto">
+                        <label for="envoiphoto">Je désire envoyer une photo pour une reproduction par l'artiste</label>
+                    </div>
+                    <div id="choixphotodiv">
+                        <label for="choixphoto">Choisissez votre photo sur votre ordinateur (format .jpg, .jpeg, .png, .gif uniquement)</label>
+                        <input type="file" id="choixphotoid" name="choixphoto" accept=".jpg, .jpeg, .png, .gif"/>
+                    </div>
+                </div>
+                <div id="demandediv">
+                    <label for="demandeid" id = "demandelabelid">Votre demande</label><br />
+                    <textarea id="demandeid" name="demande" cols="60" rows="10"></textarea>>
                 </div>
                 <div>
                     <input type="submit" />
@@ -38,7 +49,6 @@
             </form>
         </div>
     </section>
-
 
 
 {% endblock %}

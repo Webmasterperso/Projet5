@@ -1,6 +1,7 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Les oeuvres d'Anne Madamet
+{% block title %}
+Les actualités de l'artiste peintre Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -18,7 +19,7 @@
             <h2>{{actualites.date_actualite_fr|e}} - {{ actualites.actualite_titre|e }}</H2>
             <div id="actualitedetails">
                 <div id="imageactu">
-                <img src="/imagesactu/{{actualites.actualite_lien|e}}" alt="la photo" id="photo" /></a>
+                <img src="/imagesactu/{{actualites.actualite_lien|e}}" title="{{ actualites.actualite_titre|e }}" alt="la photo actualité {{ actualites.actualite_titre|e }}" id="photo" /></a>
                 </div>
                 <ul>                    
                     <li>{{ actualites.actualite_text|e }}</li>

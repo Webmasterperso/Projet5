@@ -1,0 +1,665 @@
+{% extends "templateinit.twig" %}
+
+{% block title %}
+Ma commande du site Anne Madamet
+{% endblock %}
+
+{% block head %}
+{{ parent() }}
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
+{% endblock %}
+
+{% block content %}
+    <h1>{{ a_variable }}</h1>
+    <section id="tetecommande">
+        <ul>
+            <li id="li1"><a id="lienpannier" href="{{ base }}/panier" title="accéder à mon panier">Panier</a></li>
+            <li><i class="fa-solid fa-angles-right"></i></li>
+            <li id="li2">compte</li>
+            <li><i class="fa-solid fa-angles-right"></i></li>
+            <li>Commande</li>
+            <li id="li3"><i class="fa-solid fa-angles-right"></i></li>
+            <li>Validation</li>
+
+    </section>
+
+
+    <section id="commande">
+        <section id="bilancommande">
+            <div class='titrebilancommande'><h2>Commande</h2></div>
+                <div id="listeoeuvrescommande">
+                    {% set indexcommand = 0 %}
+                    {% set prixtotal = 0 %}
+        
+                    {% for oeuvrecommand in datacommand %}  
+                
+                        {% set indexcommand = indexcommand + 1 %}
+                        {% set prixtotal = prixtotal + oeuvrecommand.oeuvre_prix %}
+                        <div id='divproduitpanierIn{{indexpanier|e}}' class='produitcomand'>
+                            <div class='imgproduitpanierIn'>
+                                <img src='{{ base }}/imagesoeuvres/{{oeuvrecommand.oeuvre_lien|e}}' alt='image oeuvre' class='imgoeuvrepanier' />
+                            </div>
+                            <div class='descproduitpanierIn'>
+                                <ul>
+                                    <li class='idproduitpanierIn'>Oeuvre n° {{oeuvrecommand.oeuvre_id|e}}</li>
+                                    {#<li class='titreproduitpanierIn'>{{oeuvrecommand.oeuvre_titre|e}}</li>#}
+                                </ul>
+                            </div>
+                        
+                            <div class='prixproduitpanierIn'>{{oeuvrecommand.oeuvre_prix|e}} €</div>
+                            <div class='btproduitpanierIn'>
+                            <a id="btsupproduitpanier" href="{{ base }}/panier" title="Modifier mon panier"><em class="fa-solid fa-cart-shopping" aria-hidden="true"></em></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+       
+            <ul>
+            {% if indexcommand > 1 %}
+                <li class='idnbrarticle'>Vous allez acheté {{ indexcommand }} oeuvres</li>
+            {% else %}
+                <li class='idnbrarticle'>Vous allez acheté {{ indexcommand }} oeuvre</li>
+            {% endif %}
+            <li class='prixtotalpanier1'>pour un </li>
+            <li class='prixtotalpanier2'> Total de {{prixtotal}} €</li>
+            <li class='fraisport'> Frais de port : Gratuit</li>
+            <li class='TVA'> TVA : 0,00 €</li>
+            </ul>
+        </section>
+
+        <section id="comptecommande">
+            {% if session.role %}
+                <div class="alerte">{{ a_alerte }}</div>
+                    
+                <div id="commandeclient">
+                    
+                    <div id="msghorsligne">
+                    
+                        <p>Vous ne souhaitez pas regler en ligne et régler par chèque ou auparavant, vous voulez vous mettre en relation avec l'artiste <br>
+                    
+                            remlissez ce formulaire :</p>
+                    
+                        <i class="fa-solid fa-circle-info"></i>
+                    
+                        <p class="alerte" > Attention, ceci n'est pas une réservation ni une commande !!! Tant que la transaction n'a pas été validé par l'artiste, à tout moment un autre client peut l'acheter directement sur le site.
+                    
+                    </div>
+
+                    
+                    <div class = "formulaire">
+
+                    
+                        <form action="{{ base }}/command" method="post" enctype="multipart/form-data" name="valcommande">
+
+                            <input type="text" id="list" name="list" value="{{listcommand}}"/>
+                            <div>
+                    
+                                <label for="nomvalcommandeid">Nom</label><br>
+                    
+                                <input type="text" id="nomvalcommandeid" name="nomvalcommande" value="{{session.nom|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="prenomvalcommandeid">Prénom</label><br>
+                    
+                                <input type="text" id="prenomvalcommandeid" name="prenomvalcommande" value="{{session.prenom|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="mailvalcommandeid">Mail</label><br>
+                    
+                                <input type="email" id="mailvalcommandeid" name="mailvalcommande" value="{{session.mail|e}}"/>
+                    
+                            </div>
+                            <div>
+                    
+                                <label for="telvalcommandeid">Téléphone</label><br>
+                    
+                                <input type="text" id="telvalcommandeid" name="telvalcommande"  value="{{session.telephone|e}}"/>
+                    
+                            </div>
+
+                    
+                            <div id="demandediv">
+                    
+                                <label for="demandeid" id = "demandelabelid">Votre demande</label><br>
+                    
+                                <textarea id="demandeid" name="demandevalcommande" cols="50" rows="10"></textarea>
+                    
+                            </div>
+
+                    
+                            <div id="listeoeuvrecontact">
+                    
+                                {% set indexcommand = 0 %}
+                    
+                                {% set prixtotal = 0 %}
+
+                    
+                                {% for oeuvrecommand in datacommand %}  
+
+                    
+                                    {% set indexcommand = indexcommand + 1 %}
+                    
+                                    {% set prixtotal = prixtotal + oeuvrecommand.oeuvre_prix %}
+                    
+                                    <div id='divproduitcontact{{indexpanier|e}}' class='produitcomand'>
+                    
+                                        <div class='imgproduitpanierIn'>
+                    
+                                            <img src='{{ base }}/imagesoeuvres/{{oeuvrecommand.oeuvre_lien|e}}' alt='image oeuvre' class='imgoeuvrepanier' />
+                    
+                                        </div>
+                    
+                                        <div class='descproduitpanierIn'>
+                    
+                                            <ul>
+                    
+                                                <li class='idproduitpanierIn'>Oeuvre n° {{oeuvrecommand.oeuvre_id|e}}</li>
+                    
+                                                {#<li class='titreproduitpanierIn'>{{oeuvrecommand.oeuvre_titre|e}}</li>#}
+                    
+                                            </ul>
+                    
+                                        </div>
+                    
+                                        <div class='prixproduitpanierIn'>{{oeuvrecommand.oeuvre_prix|e}} €</div>
+
+                    
+                                    </div>
+                    
+                                {% endfor %}
+                    
+                            </div>
+                    
+                            <div id="recap">
+                    
+                                <ul>
+                    
+                                    {% if indexcommand > 1 %}
+                    
+                                        <li class='idnbrarticle'>contact pour {{ indexcommand }} oeuvres</li>
+                    
+                                    {% else %}
+                    
+                                        <li class='idnbrarticle'>contact pour {{ indexcommand }} oeuvre</li>
+                    
+                                    {% endif %}
+                    
+                                    <li class='prixtotalpanier2'> Total : {{prixtotal}} €</li>
+                    
+                                    <li class='fraisport'> Frais de port : Gratuit</li>
+                    
+                                    <li class='TVA'> TVA : 0,00 €</li>
+                    
+                                </ul>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <input type="submit" value="Envoyer le message"/>
+                    
+                            </div>
+                    
+                        </form>
+                    
+                    </div>
+                    
+                                            {#form action="{{ base }}/command" onsubmit="return verifform()" method="post" name="formfacturation">#}
+                    
+                                    {#<fieldset id="adressfactu"><legend>Adresse de facturation</legend>
+                    
+                        <div class = "formulaire">
+
+                        
+                    
+                        <form action="{{ base }}/command" method="post" name="formfacturation">
+                    
+                            <input type="hidden" id="list" name="list" value="{{listcommand}}"/>
+                    
+                            <input type="hidden" id="adfacid" name="adfac" value="{{adressexpedition}}"/>
+                    
+                            <div>
+                    
+                                <label for="nomactu">Nom</label><br />
+                    
+                                {% if adressfacturation %}
+                    
+                                    <input type="text" id="nomactu" name="nomfac" value="{{adressfacturation.nomfac|e}}"/>
+                    
+                                {% else %}
+                    
+                                    <input type="text" id="nomactu" name="nomfac" value="{{session.nom|e}}"/>
+                    
+                                {% endif %}
+
+                                
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="prenomactu">Prénom</label><br />
+                    
+                                <input type="text" id="prenomactu" name="prenomfac" value="{{session.prenom|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="adresseactu">Adresse</label><br />
+                    
+                                <input type="text" id="adresseactu" name="adressefac" value="{{session.adresse|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="cpactu">Code Postal</label><br />
+                    
+                                <input type="text" id="cpactu" name="cpfac" value="{{session.cp|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="villeactu">Ville</label><br />
+                    
+                                <input type="text" id="villeactu" name="villefac" value="{{session.ville|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="mailactu">mail</label><br />
+                    
+                                <input type="email" id="mailactu" name="mailfac" value="{{session.mail|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="telephoneactu">téléphone</label><br />
+                    
+                                <input type="text" id="telephoneactu" name="telephonefac" value="{{session.telephone|e}}"/>
+                    
+                            </div>
+
+                    
+                            <div>
+                    
+                                <input type="checkbox" id="adressportid" name="adressport">
+                    
+                                <label for="adressportid">je choisis une autre adresse pour l'expédition</label>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <input type="submit" id="Modifierfacid" name="Modifierfac" value="valider facturation" />
+                    
+                            </div>
+                    
+                        </form>
+                    
+                        <p>Tous les champs sont obligatoires</p>
+                    
+                        </div>
+                    
+                        < /fieldset>
+
+                    
+                        <fieldset id="adressexpe"><legend>Adresse d'expédition</legend>
+                    
+                        <div class = "formulaire">
+
+                    
+                        <form action="{{ base }}/command" method="post" name="formexpe">
+                    
+                            <input type="text" id="list" name="list" value="{{listcommand}}"/>
+                    
+                            <input type="text" id="adexpid" name="adexp" value="{{adressfacturation}}"/>
+                    
+                            <div>
+                    
+                                <label for="nomexpe">Nom</label><br />
+                    
+                                <input type="text" id="nomexpe" name="nomexp" value="{{session.nom|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="prenomexpe">Prénom</label><br />
+                    
+                                <input type="text" id="prenomexpe" name="prenomexp" value="{{session.prenom|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="adresseexpe">Adresse</label><br />
+                    
+                                <input type="text" id="adresseexpe" name="adresseexp" value="{{session.adresse|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="cpexpe">Code Postal</label><br />
+                    
+                                <input type="text" id="cpexpe" name="cpexp" value="{{session.cp|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="villeexpe">Ville</label><br />
+                    
+                                <input type="text" id="villeexpe" name="villeexp" value="{{session.ville|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="mailexpe">mail</label><br />
+                    
+                                <input type="email" id="mailexpe" name="mailexp" value="{{session.mail|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <label for="telephoneexpe">téléphone</label><br />
+                    
+                                <input type="text" id="telephoneexpe" name="telephoneexp" value="{{session.telephone|e}}"/>
+                    
+                            </div>
+                    
+                            <div>
+                    
+                                <input type="submit" id="Modifierexpid"  name="Modifierexp" value="valider l'expédition" />
+                    
+                            </div>
+                    
+                        </form>
+                    
+                        <p>Tous les champs sont obligatoires</p>
+                    
+                        </div>
+                    
+                        </fieldset>#}
+                    
+                </div>
+                
+                    {#{% if adressexpedition %}#}
+                    {#paiement#}
+                <div id="paiement">
+                    
+                    {# paiement Paypal#}
+                    <div id="smart-button-container">
+                        <div style="text-align: center; display: none;"><label for="description">LES OEUVRES </label><input type="text" name="descriptionInput" id="description" maxlength="30" value="{{ indexcommand }} oeuvres"></div>
+                          <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+                        <div style="text-align: center; display: none;"><label for="amount">Prix total </label><input name="amountInput" type="number" id="amount" value="{{prixtotal}}" disabled="disabled"><span> EUR</span></div>
+                          <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+                        <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+                          <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+                        <div id="horsligne-button-container">Paiement hors ligne</div>
+                        <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+                    </div>
+                    <script src="https://www.paypal.com/sdk/js?client-id={{paypalId}}&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+                    <script>
+                    function initPayPalButton() {
+                        var description = document.querySelector('#smart-button-container #description');
+                        var amount = document.querySelector('#smart-button-container #amount');
+                        var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+                        var priceError = document.querySelector('#smart-button-container #priceLabelError');
+                        var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+                        var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+                        var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+                        var elArr = [description, amount];
+                        if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+                            invoiceidDiv.style.display = "block";
+                        }
+                        var purchase_units = [];
+                        purchase_units[0] = {};
+                        purchase_units[0].amount = {};
+                        function validate(event) {
+                          return event.value.length > 0;
+                        }
+                        paypal.Buttons({
+                          style: {
+                            color: 'blue',
+                            shape: 'pill',
+                            label: 'checkout',
+                            layout: 'vertical',
+                            },
+                            onInit: function (data, actions) {
+                              actions.disable();
+                              if(invoiceidDiv.style.display === "block") {
+                                elArr.push(invoiceid);
+                              }
+                              elArr.forEach(function (item) {
+                                item.addEventListener('keyup', function (event) {
+                                  var result = elArr.every(validate);
+                                  if (result) {
+                                    actions.enable();
+                                  } else {
+                                    actions.disable();
+                                  }
+                                });
+                              });
+                            },
+                            onClick: function () {
+                              if (description.value.length < 1) {
+                                descriptionError.style.visibility = "visible";
+                              } else {
+                                descriptionError.style.visibility = "hidden";
+                              }
+                              if (amount.value.length < 1) {
+                                priceError.style.visibility = "visible";
+                              } else {
+                                priceError.style.visibility = "hidden";
+                              }
+                              if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                                invoiceidError.style.visibility = "visible";
+                              } else {
+                                invoiceidError.style.visibility = "hidden";
+                              }
+                              purchase_units[0].description = description.value;
+                              purchase_units[0].amount.value = amount.value;
+                              if(invoiceid.value !== '') {
+                                purchase_units[0].invoice_id = invoiceid.value;
+                              }
+                            },
+                            createOrder: function (data, actions) {
+                              return actions.order.create({
+                                purchase_units: purchase_units,
+                              });
+                            },
+                            onApprove: function (data, actions) {
+                              return actions.order.capture().then(function (orderData) {
+                                // Full available details
+                                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                // Show a success message within this page, e.g.
+                                const element = document.getElementById('paypal-button-container');
+                                element.innerHTML = '';
+                                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                // Or go to another URL:  actions.redirect('thank_you.html');
+                              });
+                            },
+                            onError: function (err) {
+                              console.log(err);
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    initPayPalButton();
+                    </script>
+                </div>
+                {#{% endif %}#}
+            {% else %}
+                <div id= "commandeconnect">
+                    <div class='titrebilancommande'><h2>je me connecte...</h2></div>
+
+                    <div class = "formulaire">
+                        <form action="{{ base }}/command" method="post" name="users">
+                            <input type="text" id="list" name="list" value="{{listcommand}}"/>
+                            <div>
+                                <label for="pseudo">Pseudo</label><br />
+                                <input type="text" id="pseudo" name="pseudo" />
+                            </div>                
+                            <div>
+                                <label for="mdp">Mot de Passe</label><br />
+                                <input type="password" id="mdp" name="mdp" />
+                            </div>
+
+                            <div>
+                                <input type="submit" />
+                            </div>
+                        </form>
+                        <p> Pas encore inscrit <a href="/connectnew">Je crée mon compte</a>
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+
+    </section>
+
+    <section id = "paiementsection">
+
+    </section>
+    
+
+
+
+
+
+    {# paiement Paypal#}
+    {#
+    <div id="smart-button-container">
+    <div style="text-align: center"><label for="description">LES OEUVRES </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>
+      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+    <div style="text-align: center"><label for="amount">Prix total </label><input name="amountInput" type="number" id="amount" value="" ><span> EUR</span></div>
+      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+</div>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+<script>
+  function initPayPalButton() {
+    var description = document.querySelector('#smart-button-container #description');
+    var amount = document.querySelector('#smart-button-container #amount');
+    var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+    var priceError = document.querySelector('#smart-button-container #priceLabelError');
+    var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+    var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+    var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+    var elArr = [description, amount];
+
+    if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+      invoiceidDiv.style.display = "block";
+    }
+
+    var purchase_units = [];
+    purchase_units[0] = {};
+    purchase_units[0].amount = {};
+
+    function validate(event) {
+      return event.value.length > 0;
+    }
+
+    paypal.Buttons({
+      style: {
+        color: 'blue',
+        shape: 'pill',
+        label: 'checkout',
+        layout: 'vertical',
+        
+      },
+
+      onInit: function (data, actions) {
+        actions.disable();
+
+        if(invoiceidDiv.style.display === "block") {
+          elArr.push(invoiceid);
+        }
+
+        elArr.forEach(function (item) {
+          item.addEventListener('keyup', function (event) {
+            var result = elArr.every(validate);
+            if (result) {
+              actions.enable();
+            } else {
+              actions.disable();
+            }
+          });
+        });
+      },
+
+      onClick: function () {
+        if (description.value.length < 1) {
+          descriptionError.style.visibility = "visible";
+        } else {
+          descriptionError.style.visibility = "hidden";
+        }
+
+        if (amount.value.length < 1) {
+          priceError.style.visibility = "visible";
+        } else {
+          priceError.style.visibility = "hidden";
+        }
+
+        if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+          invoiceidError.style.visibility = "visible";
+        } else {
+          invoiceidError.style.visibility = "hidden";
+        }
+
+        purchase_units[0].description = description.value;
+        purchase_units[0].amount.value = amount.value;
+
+        if(invoiceid.value !== '') {
+          purchase_units[0].invoice_id = invoiceid.value;
+        }
+      },
+
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: purchase_units,
+        });
+      },
+
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (orderData) {
+
+          // Full available details
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+          // Show a success message within this page, e.g.
+          const element = document.getElementById('paypal-button-container');
+          element.innerHTML = '';
+          element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+          // Or go to another URL:  actions.redirect('thank_you.html');
+          
+        });
+      },
+
+      onError: function (err) {
+        console.log(err);
+      }
+    }).render('#paypal-button-container');
+  }
+  initPayPalButton();
+</script>
+#}
+{% endblock %}

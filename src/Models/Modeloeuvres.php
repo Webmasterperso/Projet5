@@ -50,6 +50,19 @@ class Modeloeuvres extends bdmanager
         return $datacategories;
     }
 
+    public function readonecat($catId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT categorie_id, categorie_nom FROM categories WHERE categorie_id = ?');
+        $req->execute(array($catId));
+        $datacategorie = $req->fetchAll();
+        return $datacategorie;
+
+        //$datachapter = $req->fetch();
+
+        return $req;
+    }
+
     public function createoeuvre($catid, $oeuvretitre, $oeuvredescription, $oeuvrelien, $prix, $statut)
     {
         $db = $this->dbConnect();
@@ -76,6 +89,22 @@ class Modeloeuvres extends bdmanager
         $deleteoeuvre = $req->execute(array($id));
 
         return $deleteoeuvre;
+    }
+    
+    /**
+     * [getOeuvresIntoCart description]
+     *
+     * @param   Array  $oeuvres  [$oeuvres description]
+     *
+     * @return  Array            [return description]
+     */
+    public function getOeuvresIntoCart($oeuvres)
+    {
+        $oeuvresDetails = [];
+        foreach ($oeuvres as $key) {
+            array_push($oeuvresDetails, $this->readoneoeuvre($key)[0]);
+        }
+        return $oeuvresDetails;
     }
 
 }

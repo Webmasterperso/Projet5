@@ -1,7 +1,7 @@
 {% extends "templateinit.twig" %}
 
 {% block title %}
-Le site d'Anne Madamet
+Le site de l'artiste peintre Anne Madamet
 {% endblock %}
 
 {% block head %}
@@ -12,24 +12,111 @@ Le site d'Anne Madamet
 
     
 
-    {% for nomuser in datauser %}
-    
+    {#{% for nomuser in datauser %}
     <h1>Bienvenue {{nomuser.user_pseudo|e}}</h1>
-    <h1>Bienvenue dans la session de {{session.user|e}}</h1>
-    {% endfor %} 
+    <h1>session de {{session.user|e}}</h1>
+    {% endfor %} #}
 
-    <p>Page d'accueil du site de Anne Madamet, artiste peintre</p>
+    
     <h1>{{ a_variable }}</h1>
-    <section id="slideaccueil">
-
+    
+    <section id="slideacc">
+        
+        <div id="diapoacc1" class="diapoacc" style="display: block;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220228_191319_resized_20220505_084942339.jpg" title = "peinture lion 1" alt="Evolution oeuvre" id="pictures1" class="images">
+            <div id="divcapacc1" class ="divcapacc">Une feuille </div>
+        </div>
+        <div id="diapoacc2" class="diapoacc" style="display: block;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220228_191319_resized_20220505_084942339.jpg" title = "peinture lion 2" alt="Evolution oeuvre" id="pictures2" class="images">
+            <div id="divcapacc2" class ="divcapacc">Une feuille </div>
+        </div>
+        <div id="diapoacc3" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220302_153846_resized_20220505_084942138.jpg" title = "peinture lion 3" alt="Evolution oeuvre" id="pictures3" class="images">
+            <div id="divcapacc3" class ="divcapacc">Une feuille<br>de papier </div>
+        </div>
+        <div id="diapoacc4" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220302_175031_resized_20220505_084941864.jpg" title = "peinture lion 4" alt="Evolution oeuvre" id="pictures4" class="images">
+            <div id="divcapacc4" class ="divcapacc">Une feuille<br>de papier,<br>un crayon</div>
+        </div>
+        <div id="diapoacc5" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220304_211934_resized_20220505_084941537.jpg" title = "peinture lion 5" alt="Evolution oeuvre" id="pictures5" class="images">
+            <div id="divcapacc5" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout</div>
+        </div>
+        
+        <div id="diapoacc6" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220312_114925_resized_20220505_084941235.jpg" title = "peinture lion 6" alt="Evolution oeuvre" id="pictures6" class="images">
+            <div id="divcapacc6" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient</div>
+        </div>
+        <div id="diapoacc7" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220312_175857_resized_20220505_084940949.jpg" title = "peinture lion 7" alt="Evolution oeuvre" id="pictures7" class="images">
+            <div id="divcapacc7" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient<br>source</div>
+        </div>
+        <div id="diapoacc8" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220322_155205_resized_20220505_084940704.jpg" title = "peinture lion 8" alt="Evolution oeuvre" id="pictures8" class="images">
+            <div id="divcapacc8" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient<br>source<br>d'inspiration</div>
+        </div>
+        <div id="diapoacc9" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220327_151353_resized_20220505_084940373.jpg" title = "peinture lion 9" alt="Evolution oeuvre" id="pictures9" class="images">
+            <div id="divcapacc9" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient<br>source<br>d'inspiration </div>
+        </div>
+        <div id="diapoacc10" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220327_152945_resized_20220505_084939461.jpg" title = "peinture lion 10" alt="Evolution oeuvre" id="picture10" class="images">
+            <div id="divcapacc10" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient<br>source<br>d'inspiration </div>
+        </div>
+        <div id="diapoacc11" class="diapoacc" style="display: none;">
+            <img src="{{ base }}/images/imagefondulion/IMG_20220327_152945_resized_20220505_084939461.jpg" title = "peinture lion 11" alt="Evolution oeuvre" id="picture11" class="images">
+            <div id="divcapacc11" class ="divcapacc">Une feuille<br>de papier,<br>un crayon,<br>et tout devient<br>source<br>d'inspiration </div>
+        </div>
     </section>
-    
 
+    <section id="menuaccueil">
+        <div class = "elmtmenuaccueil">
+            <div class = "enteteelmaccueil">
+                <p><img src="{{ base }}/images/ecume_mer.jpg" title = "icone écume de mer" alt="écume de mer" id="photooeuvre" /> <span> Des oeuvres de l'artiste...</span></p>
+            </div>
+            <div class = "textelmaccueil">
+                <p> Les oeuvres sont classées par catégories :
+                <ul>
+                    {% for categorie in datacat %}
+                    <li>{{ categorie.categorie_nom|e }}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="footelmaccueil">
+                <p><a href="{{ base }}/oeuvrescat/0"><span> Voir les oeuvres </span><i class="fa-solid fa-angles-right"></i></a></p>
+            </div>
+        </div>
 
-    
-    <!--<a href="/oeuvres">Mes oeuvres</a></li>-->
-    
-    
-       
-   
+        <div class = "elmtmenuaccueil">
+            <div class = "enteteelmaccueil">
+                <p><img src="{{ base }}/images/icône-palette.png" title = "icone palette peinture" alt="palette peinture" id="photooeuvre" /> <span>Demander votre oeuvre...</span></p>
+            </div>
+            <div class = "textelmaccueil">
+                <p>D emander à l'artiste de peindre pour vous un lieu, un animal, une personne...<br>
+                Pour cela, envoyer une photo à l'artiste qui vous fera une proposition...
+            </div>
+            <div class="footelmaccueil">
+                <p><a href="{{ base }}/contact"><span> Faire sa demande </span><i class="fa-solid fa-angles-right"></i></a></p>
+            </div>
+        </div>
+
+        <div class = "elmtmenuaccueil">
+            <div class = "enteteelmaccueil">
+                    <p><img src="{{ base }}/images/artiste.jpg" title = "icone portrait artiste" alt="portrait artiste" id="photooeuvre" /> <span> Les actualités de l'artiste...</span></p>
+                </div>
+                <div class = "textelmaccueil">
+                    <p> D e nombreux évènements :
+                    <ul>
+                        {% for actu in dataactualite %}
+                        <li>{{ actu.actualite_titre|e }}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="footelmaccueil">
+                    <p><a href="{{ base }}/oeuvre/oeuvrecar/0"><span> Voir les actualités </span><i class="fa-solid fa-angles-right"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

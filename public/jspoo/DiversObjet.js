@@ -1,34 +1,38 @@
-console.log("ouverture SlideObjet");
-
-class SlideObjet {
+class DiversObjet {
     constructor(conteneur) {
 
-        if (document.getElementById(conteneur)){
-        this.nbrimages = document.getElementById(conteneur).getElementsByClassName("diapo").length; //taille tableau class images
-        this.index = 1; //index images
-        this.goright = document.getElementById("slide_right");
-        this.goleft = document.getElementById("slide_left");
-        //this.gopause = document.getElementById("slide_pause");
-        //this.tempo;
-        //this.timeschgmt = timeschgmt;
-        this.document;
-        //this.affichage();
-        this.events();
+        if (document.getElementById(conteneur)) {
+            this.divsendpicture = document.getElementById("divsendpicture");
+            this.divchoixphoto = document.getElementById("choixphotodiv");
+            this.envoiphoto = document.getElementById("envoiphotoid");
+            this.divdemande = document.getElementById("demandelabel");
+
+            console.log("case à cocher est egal à : " + this.envoiphoto.checked);
+            this.events();
         }
     }
-    
-    affichage() {
-        /**clearTimeout(this.tempo);
-        if (this.tempo !== null) {
+
+    affichagephotocontact() {
+        console.log("case à cocher contact est maintenant egal à : " + this.envoiphoto.checked);
+        if (this.envoiphoto.checked === true) {
+            this.divchoixphoto.style.display = "block";
+            this.divdemande.innerHTML = "Détaillez le plus possible l'oeuvre souhaitée (taille, noir et blanc ou couleur,exigences diverses...) : </br>";
+        }
+        else{
+            this.divchoixphoto.style.display = "none";
+            this.divdemande.innerHTML = "Votre demande :</br>";
+        }
+        
+        /*if (this.tempo !== null) {
             this.tempo = setInterval(this.nextdiapo.bind(this), this.timeschgmt);
         }
-        document.getElementById("diapo" + this.index).style.display = "flex";**/
+        document.getElementById("diapo" + this.index).style.display = "flex";*/
     }
 
-    
 
 
-    nextdiapo() {
+
+    /*nextdiapo() {
         document.getElementById("diapo" + this.index).style.display = "none";
         if (this.index >= this.nbrimages) { this.index = 0; }
         this.index++;
@@ -61,20 +65,21 @@ class SlideObjet {
         }
     }*/
 
-    clavier(touche) {
+    /*clavier(touche) {
         if (touche.key === "ArrowLeft") { this.prevdiapo(); }
         if (touche.key === "ArrowRight") { this.nextdiapo(); }
-    }
+    }*/
 
     events() {
-        this.goright.addEventListener("click", this.nextdiapo.bind(this));
+        this.envoiphoto.addEventListener("change", this.affichagephotocontact.bind(this));
+       
 
-        this.goleft.addEventListener("click", this.prevdiapo.bind(this));
+        /*this.goleft.addEventListener("click", this.prevdiapo.bind(this));
 
         //this.gopause.addEventListener("click", this.pause.bind(this));
 
         document.addEventListener("keydown", this.clavier.bind(this));
-
+*/
 
 
     }

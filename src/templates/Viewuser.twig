@@ -1,10 +1,11 @@
 {% extends "templateinit.twig" %}
 
-{% block title %}Le site d'Anne Madamet
+{% block title %}Connection sur le site d'Anne Madamet
 {% endblock %}
 
 {% block head %}
 {{ parent() }}
+
 {% endblock %}
 
 {% block content %}
@@ -15,7 +16,7 @@
     
         <h2 class = "alerte">{{ a_alerte }}</h1>
         <div class = "formulaire">
-            <form action="/connect" method="post" name="users">
+            <form action="{{ base }}/connect" method="post" name="users">
             
                 <div>
                     <label for="pseudo">Pseudo</label><br />
@@ -25,6 +26,7 @@
                     <label for="mdp">Mot de Passe</label><br />
                     <input type="password" id="mdp" name="mdp" />
                 </div>
+                
                 <div>
                     <input type="submit" />
                 </div>
